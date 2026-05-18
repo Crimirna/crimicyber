@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>crimicyber — Cibercriminología y seguridad digital</title>
+  <meta name="description" content="Blog cyberpunk editorial de Mirna Zárate Hernández sobre cibercriminología, seguridad digital, prevención y análisis de riesgos digitales." />
+  <meta name="color-scheme" content="dark light" />
+  <meta property="og:title" content="Mirna Zárate Hernández — Blog cyberpunk editorial" />
+  <meta property="og:description" content="Artículos, eventos y proyectos sobre cibercriminología, seguridad digital y prevención digital." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Inter:wght@400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <style>
+    :root,[data-theme="light"]{
+      --text-xs:clamp(.75rem,.7rem + .25vw,.875rem);
+      --text-sm:clamp(.875rem,.8rem + .35vw,1rem);
+      --text-base:clamp(1rem,.95rem + .25vw,1.125rem);
+      --text-lg:clamp(1.125rem,1rem + .75vw,1.5rem);
+      --text-xl:clamp(1.5rem,1.2rem + 1.25vw,2.25rem);
+      --text-2xl:clamp(2.25rem,1.2rem + 3vw,4rem);
+      --space-1:.25rem; --space-2:.5rem; --space-3:.75rem; --space-4:1rem; --space-5:1.25rem; --space-6:1.5rem; --space-8:2rem; --space-10:2.5rem; --space-12:3rem; --space-16:4rem; --space-20:5rem;
+      --radius-sm:.375rem; --radius-md:.5rem; --radius-lg:.75rem; --radius-xl:1rem; --radius-full:9999px;
+      --color-bg:#f5f7fa; --color-surface:#ffffff; --color-surface-2:#ecf3f7; --color-surface-3:#e7eef5; --color-text:#101114; --color-text-muted:#495669; --color-border:rgba(14,165,233,.18); --color-primary:#00d9ff; --color-secondary:#ff47d2; --color-acid:#d4ff3f; --color-panel:#eff7fb; --color-inverse:#061018;
+      --shadow-sm:0 1px 2px rgba(0,0,0,.06); --shadow-md:0 18px 50px rgba(0,0,0,.10); --shadow-glow:0 0 20px rgba(0,217,255,.20);
+      --font-display:'Orbitron',sans-serif; --font-body:'Inter',sans-serif; --font-mono:'Share Tech Mono',monospace;
+    }
+    [data-theme="dark"]{
+      --color-bg:#05070c; --color-surface:#0a0f17; --color-surface-2:#0d1420; --color-surface-3:#111a29; --color-text:#edf7ff; --color-text-muted:#8ea3b6; --color-border:rgba(84,240,255,.18); --color-primary:#54f0ff; --color-secondary:#ff4fd8; --color-acid:#e6ff4f; --color-panel:rgba(10,15,23,.82); --color-inverse:#061018;
+      --shadow-sm:0 1px 2px rgba(0,0,0,.28); --shadow-md:0 20px 50px rgba(0,0,0,.42); --shadow-glow:0 0 24px rgba(84,240,255,.18);
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{-webkit-text-size-adjust:none;text-size-adjust:none;scroll-behavior:smooth}
+    body{min-height:100dvh;font-family:var(--font-body);font-size:var(--text-base);line-height:1.65;color:var(--color-text);background:
+      radial-gradient(circle at 12% 18%, rgba(84,240,255,.12), transparent 22%),
+      radial-gradient(circle at 86% 12%, rgba(255,79,216,.10), transparent 18%),
+      radial-gradient(circle at 50% 100%, rgba(230,255,79,.08), transparent 25%),
+      linear-gradient(180deg, rgba(255,255,255,.01), rgba(255,255,255,0)),
+      var(--color-bg);
+      overflow-x:hidden}
+    body::before{content:"";position:fixed;inset:0;background:
+      linear-gradient(rgba(84,240,255,.045) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(84,240,255,.045) 1px, transparent 1px);
+      background-size:34px 34px;mask-image:linear-gradient(180deg, rgba(0,0,0,.45), transparent 75%);pointer-events:none;opacity:.25;z-index:-2}
+    body::after{content:"";position:fixed;inset:0;background:repeating-linear-gradient(to bottom, rgba(255,255,255,.02), rgba(255,255,255,.02) 1px, transparent 2px, transparent 4px);opacity:.08;pointer-events:none;z-index:-1}
+    a{color:inherit;text-decoration:none}
+    img,svg{display:block;max-width:100%;height:auto}
+    button{font:inherit;background:none;border:none;color:inherit;cursor:pointer}
+    .skip-link{position:absolute;left:-9999px;top:auto}.skip-link:focus{left:1rem;top:1rem;background:var(--color-primary);color:var(--color-inverse);padding:.75rem 1rem;border-radius:var(--radius-md);z-index:999}
+    .shell{width:min(1200px,calc(100% - 2rem));margin:0 auto}
+    .header{position:sticky;top:0;z-index:100;background:color-mix(in srgb, var(--color-bg) 80%, transparent);backdrop-filter:blur(16px);border-bottom:1px solid var(--color-border);box-shadow:var(--shadow-sm)}
+    .header-inner{display:flex;align-items:center;justify-content:space-between;gap:var(--space-4);padding:var(--space-4) 0}
+    .brand{display:flex;align-items:center;gap:var(--space-3);min-width:0}
+    .brand-mark{width:44px;height:44px;color:var(--color-primary);filter:drop-shadow(0 0 14px rgba(84,240,255,.25))}
+    .brand-copy{display:grid;gap:.12rem}
+    .brand-copy strong{font-family:var(--font-display);font-size:var(--text-sm);letter-spacing:.12em;text-transform:uppercase}
+    .brand-copy span{font-family:var(--font-mono);font-size:var(--text-xs);color:var(--color-text-muted)}
+    .nav{display:flex;align-items:center;gap:var(--space-4);flex-wrap:wrap}
+    .nav a,.theme-toggle{font-family:var(--font-mono);font-size:var(--text-xs);text-transform:uppercase;letter-spacing:.12em;color:var(--color-text-muted);padding:.35rem .25rem;position:relative}
+    .nav a::after,.theme-toggle::after{content:"";position:absolute;left:0;bottom:-.15rem;width:100%;height:1px;background:linear-gradient(90deg,var(--color-primary),transparent);transform:scaleX(0);transform-origin:left;transition:transform .2s ease}
+    .nav a:hover,.theme-toggle:hover{color:var(--color-primary)}
+    .nav a:hover::after,.theme-toggle:hover::after{transform:scaleX(1)}
+    .hero{padding:clamp(4rem,10vw,8rem) 0 var(--space-16);position:relative}
+    .hero-grid{display:grid;grid-template-columns:1.25fr .9fr;gap:var(--space-8);align-items:end}
+    .eyebrow{display:inline-flex;align-items:center;gap:.65rem;padding:.55rem .95rem;border:1px solid var(--color-border);border-radius:var(--radius-full);font-family:var(--font-mono);font-size:var(--text-xs);text-transform:uppercase;letter-spacing:.14em;color:var(--color-primary);margin-bottom:var(--space-5);background:linear-gradient(90deg, rgba(84,240,255,.09), rgba(255,79,216,.06));box-shadow:var(--shadow-glow)}
+    .eyebrow::before{content:"";width:10px;height:10px;border-radius:50%;background:var(--color-acid);box-shadow:0 0 12px rgba(230,255,79,.9)}
+    h1,h2,h3{line-height:1.1}
+    h1{font-family:var(--font-display);font-size:var(--text-2xl);text-transform:uppercase;letter-spacing:.05em;max-width:12ch;text-shadow:0 0 28px rgba(84,240,255,.14)}
+    .lead{max-width:62ch;color:var(--color-text-muted);margin-top:var(--space-5)}
+    .hero-actions{display:flex;gap:var(--space-3);flex-wrap:wrap;margin-top:var(--space-6)}
+    .btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:.9rem 1.2rem;border-radius:var(--radius-md);border:1px solid var(--color-border);font-size:var(--text-sm);font-weight:600;transition:transform .18s ease, box-shadow .18s ease, color .18s ease, border-color .18s ease;background:var(--color-surface)}
+    .btn:hover{transform:translateY(-2px)}
+    .btn-primary{background:linear-gradient(90deg,var(--color-primary),var(--color-secondary));color:var(--color-inverse);border:none;box-shadow:0 0 22px rgba(84,240,255,.18)}
+    .btn-secondary{background:color-mix(in srgb, var(--color-surface) 85%, transparent);color:var(--color-text)}
+    .hud{display:grid;gap:var(--space-4)}
+    .panel{background:linear-gradient(180deg, rgba(84,240,255,.07), rgba(10,15,23,.94));border:1px solid var(--color-border);border-radius:var(--radius-xl);padding:var(--space-6);box-shadow:var(--shadow-md);position:relative;overflow:hidden;isolation:isolate}
+    .panel::before{content:"";position:absolute;inset:0;background:linear-gradient(135deg, rgba(84,240,255,.12), transparent 28%, transparent 72%, rgba(255,79,216,.08));pointer-events:none}
+    .panel::after{content:"";position:absolute;inset:0;border:1px solid rgba(84,240,255,.06);clip-path:polygon(0 0, calc(100% - 26px) 0, 100% 26px, 100% 100%, 24px 100%, 0 calc(100% - 24px));pointer-events:none}
+    .panel-label{font-family:var(--font-mono);font-size:var(--text-xs);text-transform:uppercase;letter-spacing:.16em;color:var(--color-secondary);margin-bottom:var(--space-4)}
+    .signal-list{display:grid;gap:var(--space-4)}
+    .signal-item{padding-bottom:var(--space-4);border-bottom:1px solid rgba(138,162,180,.18)}
+    .signal-item:last-child{border-bottom:none;padding-bottom:0}
+    .signal-item strong{display:block;font-size:var(--text-sm);margin-bottom:.35rem}
+    .signal-item span{color:var(--color-text-muted);font-size:var(--text-sm)}
+    .metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--space-3)}
+    .metric{padding:var(--space-4);border:1px solid var(--color-border);background:rgba(84,240,255,.03);border-radius:var(--radius-lg)}
+    .metric strong{display:block;font-family:var(--font-display);font-size:var(--text-lg);color:var(--color-primary)}
+    .metric span{display:block;font-family:var(--font-mono);font-size:var(--text-xs);color:var(--color-text-muted);text-transform:uppercase;letter-spacing:.08em}
+    .section{padding:var(--space-12) 0;position:relative}
+    .section-head{display:flex;justify-content:space-between;align-items:end;gap:var(--space-4);margin-bottom:var(--space-6)}
+    .section-head h2{font-family:var(--font-display);font-size:var(--text-xl);text-transform:uppercase;letter-spacing:.06em}
+    .section-head p{max-width:48ch;color:var(--color-text-muted);font-size:var(--text-sm)}
+    .section-kicker{font-family:var(--font-mono);font-size:var(--text-xs);text-transform:uppercase;letter-spacing:.16em;color:var(--color-primary);margin-bottom:var(--space-2)}
+    .featured-grid,.posts-grid,.project-grid,.events-grid{display:grid;gap:var(--space-5)}
+    .featured-grid{grid-template-columns:1.3fr .85fr}
+    .posts-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .events-grid{grid-template-columns:1fr 1fr}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01)),var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-xl);padding:var(--space-5);box-shadow:var(--shadow-md);position:relative;overflow:hidden;isolation:isolate}
+    .card::before{content:"";position:absolute;inset:0;background:linear-gradient(135deg, rgba(84,240,255,.08), transparent 35%, transparent 70%, rgba(255,79,216,.06));pointer-events:none}
+    .card::after{content:"";position:absolute;inset:auto 0 0 0;height:2px;background:linear-gradient(90deg,var(--color-primary),var(--color-secondary),transparent 78%)}
+    .card:hover{transform:translateY(-3px);transition:transform .2s ease, box-shadow .2s ease;box-shadow:0 0 0 1px rgba(84,240,255,.1), var(--shadow-md)}
+    .meta{display:flex;gap:var(--space-3);flex-wrap:wrap;font-family:var(--font-mono);font-size:var(--text-xs);text-transform:uppercase;letter-spacing:.12em;color:var(--color-primary);margin-bottom:var(--space-3)}
+    .card h3{font-size:var(--text-lg);margin-bottom:var(--space-3)}
+    .card p{color:var(--color-text-muted);font-size:var(--text-sm);max-width:56ch}
+    .hero-post{min-height:340px;display:flex;flex-direction:column;justify-content:end;background:linear-gradient(145deg, rgba(84,240,255,.09), rgba(255,79,216,.06)),var(--color-surface)}
+    .about{display:grid;grid-template-columns:.82fr 1.18fr;gap:var(--space-6);align-items:start}
+    .portrait-card{min-height:100%;display:flex;flex-direction:column;justify-content:space-between}
+    .portrait-placeholder{aspect-ratio:4/5;border-radius:calc(var(--radius-xl) - .2rem);border:1px solid var(--color-border);background:
+      radial-gradient(circle at 28% 22%, rgba(255,79,216,.28), transparent 22%),
+      radial-gradient(circle at 75% 30%, rgba(84,240,255,.22), transparent 18%),
+      linear-gradient(160deg,#0b1019,#09111a 45%,#0f1b2d);
+      position:relative;overflow:hidden}
+    .portrait-placeholder::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(to bottom, transparent, transparent 6px, rgba(84,240,255,.04) 7px)}
+    .portrait-placeholder::after{content:"MZH";position:absolute;inset:auto 1rem 1rem auto;font-family:var(--font-display);font-size:clamp(2.2rem,5vw,4rem);color:rgba(84,240,255,.24);text-shadow:0 0 22px rgba(84,240,255,.18)}
+    .about-copy p + p{margin-top:var(--space-4)}
+    .about-copy p{color:var(--color-text-muted)}
+    .tag-row{display:flex;gap:var(--space-2);flex-wrap:wrap;margin-top:var(--space-5)}
+    .tag{padding:.45rem .75rem;border-radius:var(--radius-full);border:1px solid var(--color-border);font-family:var(--font-mono);font-size:var(--text-xs);color:var(--color-primary);background:rgba(84,240,255,.05)}
+    .collab-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--space-4)}
+    .collab-card{display:grid;gap:var(--space-3);align-content:start;min-height:170px}
+    .collab-logo{display:grid;place-items:center;min-height:76px;border:1px solid var(--color-border);border-radius:var(--radius-lg);background:linear-gradient(135deg, rgba(84,240,255,.05), rgba(255,79,216,.04));font-family:var(--font-display);font-size:var(--text-sm);letter-spacing:.08em;text-transform:uppercase;color:var(--color-text)}
+    .collab-card p{font-size:var(--text-sm);color:var(--color-text-muted)}
+    .collab-card a{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--font-mono);font-size:var(--text-xs);text-transform:uppercase;letter-spacing:.08em;color:var(--color-primary)}
+    .collab-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--space-4)}
+    .collab-card{display:grid;gap:var(--space-3);align-content:start;min-height:170px}
+    .collab-logo{display:grid;place-items:center;min-height:76px;border:1px solid var(--color-border);border-radius:var(--radius-lg);background:linear-gradient(135deg, rgba(84,240,255,.05), rgba(255,79,216,.04));font-family:var(--font-display);font-size:var(--text-sm);letter-spacing:.08em;text-transform:uppercase;color:var(--color-text)}
+    .collab-card p{font-size:var(--text-sm);color:var(--color-text-muted)}
+    .collab-card a{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--font-mono);font-size:var(--text-xs);text-transform:uppercase;letter-spacing:.08em;color:var(--color-primary)}
+    .collab-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--space-4)}
+    .collab-card{display:grid;gap:var(--space-3);align-content:start;min-height:170px}
+    .collab-logo{display:grid;place-items:center;min-height:76px;border:1px solid var(--color-border);border-radius:var(--radius-lg);background:linear-gradient(135deg, rgba(84,240,255,.05), rgba(255,79,216,.04));font-family:var(--font-display);font-size:var(--text-sm);letter-spacing:.08em;text-transform:uppercase;color:var(--color-text)}
+    .collab-card p{font-size:var(--text-sm);color:var(--color-text-muted)}
+    .collab-card a{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--font-mono);font-size:var(--text-xs);text-transform:uppercase;letter-spacing:.08em;color:var(--color-primary)}
+    .event-date{display:inline-grid;place-items:center;min-width:72px;aspect-ratio:1/1;border-radius:var(--radius-lg);border:1px solid var(--color-border);background:rgba(84,240,255,.05);box-shadow:var(--shadow-glow);text-align:center;padding:.5rem}
+    .event-date strong{font-family:var(--font-display);font-size:var(--text-lg);line-height:1;color:var(--color-acid)}
+    .event-date span{font-family:var(--font-mono);font-size:var(--text-xs);text-transform:uppercase;color:var(--color-text-muted);letter-spacing:.12em}
+    .event-card-head{display:flex;gap:var(--space-4);align-items:flex-start;margin-bottom:var(--space-4)}
+    .event-meta{display:flex;gap:var(--space-2);flex-wrap:wrap;margin-top:var(--space-3)}
+    .chip{padding:.4rem .7rem;border-radius:var(--radius-full);border:1px solid var(--color-border);font-family:var(--font-mono);font-size:var(--text-xs);color:var(--color-text-muted)}
+    .social-row{display:flex;gap:var(--space-3);flex-wrap:wrap;margin-top:var(--space-5)}
+    .social-link{display:inline-flex;align-items:center;gap:.65rem;min-height:44px;padding:.75rem .95rem;border:1px solid var(--color-border);border-radius:var(--radius-full);background:rgba(84,240,255,.04);font-family:var(--font-mono);font-size:var(--text-xs);text-transform:uppercase;letter-spacing:.08em;color:var(--color-text)}
+    .social-link:hover{color:var(--color-primary);box-shadow:var(--shadow-glow);transform:translateY(-2px);transition:transform .18s ease, box-shadow .18s ease, color .18s ease}
+    .social-link svg{width:16px;height:16px;flex:none}
+    .social-row{display:flex;gap:var(--space-3);flex-wrap:wrap;margin-top:var(--space-5)}
+    .social-link{display:inline-flex;align-items:center;gap:.65rem;min-height:44px;padding:.75rem .95rem;border:1px solid var(--color-border);border-radius:var(--radius-full);background:rgba(84,240,255,.04);font-family:var(--font-mono);font-size:var(--text-xs);text-transform:uppercase;letter-spacing:.08em;color:var(--color-text)}
+    .social-link:hover{color:var(--color-primary);box-shadow:var(--shadow-glow);transform:translateY(-2px);transition:transform .18s ease, box-shadow .18s ease, color .18s ease}
+    .social-link svg{width:16px;height:16px;flex:none}
+    .footer{padding:var(--space-10) 0 var(--space-12);border-top:1px solid var(--color-border)}
+    .footer-grid{display:flex;justify-content:space-between;gap:var(--space-4);flex-wrap:wrap;color:var(--color-text-muted);font-size:var(--text-sm)}
+    .mono{font-family:var(--font-display);letter-spacing:.08em;text-transform:uppercase;color:var(--color-text)}
+    @media (max-width: 980px){.hero-grid,.featured-grid,.about,.posts-grid,.events-grid,.collab-grid{grid-template-columns:1fr}.hero h1{max-width:unset}.section-head{align-items:start;flex-direction:column}.metrics{grid-template-columns:1fr}}
+    @media (max-width: 640px){.shell{width:min(100% - 1rem,1200px)} .header-inner{align-items:flex-start;flex-direction:column}.nav{gap:var(--space-3)} .hero{padding-top:3.5rem}.hero-actions{flex-direction:column}.btn{width:100%}.event-card-head{flex-direction:column}}
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+  <header class="header">
+    <div class="shell header-inner">
+      <a class="brand" href="#inicio" aria-label="Inicio">
+        <svg class="brand-mark" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Logotipo de investigación digital">
+          <path d="M27 12C19.82 12 14 17.82 14 25C14 32.18 19.82 38 27 38C34.18 38 40 32.18 40 25C40 17.82 34.18 12 27 12Z" stroke="currentColor" stroke-width="3"/>
+          <path d="M36.5 34.5L50 48" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+          <path d="M27 18V32" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"/>
+          <path d="M20 25H34" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"/>
+          <path d="M22 14.5L18.5 11" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
+          <path d="M32 14.5L35.5 11" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
+          <path d="M14.5 22L11 18.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
+          <path d="M39.5 22L43 18.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
+          <circle cx="50" cy="48" r="4" fill="currentColor" opacity="0.18"/>
+        </svg>
+        <span class="brand-copy">
+          <strong>Mirna Zárate</strong>
+          <span>Digital investigation archive</span>
+        </span>
+      </a>
+      <nav class="nav" aria-label="Principal">
+        <a href="#articulos">Artículos</a>
+        <a href="#colaboraciones">Colaboraciones</a>
+        <a href="#eventos">Eventos</a>
+        <a href="#sobre-mi">Sobre mí</a>
+        <a href="#proyectos">Proyectos</a>
+        <a href="#contacto">Contacto</a>
+        <button class="theme-toggle" type="button" data-theme-toggle aria-label="Cambiar tema">Tema</button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenido">
+    <section class="hero" id="inicio">
+      <div class="shell hero-grid">
+        <div>
+          <span class="eyebrow">Análisis · prevención · cibercriminología</span>
+          <h1>crimicyber</h1>
+          <p class="lead">Blog cyberpunk editorial para publicar artículos, eventos y proyectos sobre cibercriminología, seguridad digital, violencia digital, protección de menores y amenazas emergentes vinculadas con inteligencia artificial.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#articulos">Ver investigaciones</a>
+            <a class="btn btn-secondary" href="#eventos">Explorar eventos</a>
+          </div>
+          <div class="social-row" aria-label="Redes principales">
+            <a class="social-link" href="https://instagram.com/tuusuario" target="_blank" rel="noopener noreferrer" aria-label="Instagram de Mirna Zárate, abre en una pestaña nueva">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"></circle></svg>
+              Instagram
+            </a>
+            <a class="social-link" href="https://www.linkedin.com/in/tuusuario" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn de Mirna Zárate, abre en una pestaña nueva">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+              LinkedIn
+            </a>
+            <a class="social-link" href="https://open.spotify.com/show/tupodcast" target="_blank" rel="noopener noreferrer" aria-label="Spotify de Mirna Zárate, abre en una pestaña nueva">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M8 10.5c2.8-1 5.8-.9 8.5.4"></path><path d="M8.8 13.4c2.1-.6 4.2-.5 6.2.4"></path><path d="M9.6 16c1.5-.4 3-.3 4.4.3"></path></svg>
+              Spotify
+            </a>
+          </div>
+        </div>
+        <div class="hud">
+          <aside class="panel" aria-label="Panel de señales">
+            <div class="panel-label">Signal feed</div>
+            <div class="signal-list">
+              <article class="signal-item">
+                <strong>Filtraciones institucionales</strong>
+                <span>Riesgos de exposición de datos, errores humanos y vulnerabilidades en ecosistemas educativos y administrativos.</span>
+              </article>
+              <article class="signal-item">
+                <strong>Violencia digital</strong>
+                <span>Grooming, ciberacoso, sextorsión y doxxing como fenómenos de victimización conectada.</span>
+              </article>
+              <article class="signal-item">
+                <strong>Deepfakes y fraude</strong>
+                <span>Escenarios de engaño asistido por IA con impacto en confianza, identidad y prevención.</span>
+              </article>
+            </div>
+          </aside>
+          <div class="metrics">
+            <div class="metric"><strong>03</strong><span>Líneas editoriales</span></div>
+            <div class="metric"><strong>02</strong><span>Formatos activos</span></div>
+            <div class="metric"><strong>24/7</strong><span>Observación digital</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="articulos">
+      <div class="shell">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">Archivo</div>
+            <h2>Artículos</h2>
+          </div>
+          <p>La portada mezcla formato dossier, paneles de interfaz y lectura clara para que tus temas se sientan investigativos, actuales y profesionales.</p>
+        </div>
+        <div class="featured-grid">
+          <article class="card hero-post">
+            <div class="meta"><span>Destacado</span><span>Investigación</span><span>12 min</span></div>
+            <h3>Filtraciones de datos y exposición de identidad en ecosistemas educativos y sociales</h3>
+            <p>Un artículo central con enfoque analítico, titulares largos y tratamiento tipo informe estratégico para abrir tu biblioteca editorial.</p>
+          </article>
+          <article class="card">
+            <div class="meta"><span>Serie</span><span>Prevención</span></div>
+            <h3>Grooming, presión y control digital: señales tempranas de riesgo en adolescentes</h3>
+            <p>Espacio para piezas preventivas, ensayos cortos o columnas de análisis sobre victimización digital y detección temprana.</p>
+          </article>
+        </div>
+        <div class="posts-grid" style="margin-top: 1.5rem;">
+          <article class="card">
+            <div class="meta"><span>Doxxing</span><span>8 min</span></div>
+            <h3>La exposición de datos como forma de violencia informacional</h3>
+            <p>Ejemplo de tarjeta para análisis sobre exposición de identidad, daño reputacional y circulación ilícita de información.</p>
+          </article>
+          <article class="card">
+            <div class="meta"><span>Prevención</span><span>10 min</span></div>
+            <h3>Cómo leer señales de riesgo digital en chats, plataformas y videojuegos</h3>
+            <p>Puedes usar este espacio para artículos enfocados en adolescencias, captación, manipulación y convivencia digital segura.</p>
+          </article>
+          <article class="card">
+            <div class="meta"><span>IA</span><span>7 min</span></div>
+            <h3>Deepfakes, fraude y manipulación: nuevos escenarios de engaño</h3>
+            <p>El tono visual se refuerza con glow discreto, tipografía técnica y jerarquía clara, no con exceso de efectos.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="colaboraciones">
+      <div class="shell">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">Red</div>
+            <h2>Colaboraciones</h2>
+          </div>
+          <p>Ubicada después del hero para dar credibilidad rápida sin romper la estética editorial; aquí puedes mostrar hasta seis organizaciones, colectivos, instituciones o iniciativas con las que colaboras.</p>
+        </div>
+        <div class="collab-grid">
+          <article class="card collab-card">
+            <div class="collab-logo" aria-label="Logo o nombre de organización colaboradora 1">Organización 01</div>
+            <h3>Nombre de la organización</h3>
+            <p>Escribe aquí el tipo de vínculo: investigación, formación, prevención, proyecto conjunto o colaboración académica.</p>
+            <a href="https://example.org" target="_blank" rel="noopener noreferrer" aria-label="Sitio oficial de la organización 1, abre en una pestaña nueva">Visitar sitio</a>
+          </article>
+          <article class="card collab-card">
+            <div class="collab-logo" aria-label="Logo o nombre de organización colaboradora 2">Organización 02</div>
+            <h3>Nombre de la organización</h3>
+            <p>Este bloque funciona bien para equipos, alianzas, laboratorios, observatorios o asociaciones profesionales.</p>
+            <a href="https://example.org" target="_blank" rel="noopener noreferrer" aria-label="Sitio oficial de la organización 2, abre en una pestaña nueva">Visitar sitio</a>
+          </article>
+          <article class="card collab-card">
+            <div class="collab-logo" aria-label="Logo o nombre de organización colaboradora 3">Organización 03</div>
+            <h3>Nombre de la organización</h3>
+            <p>Si no tienes autorización para usar el logo, puedes dejar solo el nombre de la organización con este estilo visual.</p>
+            <a href="https://example.org" target="_blank" rel="noopener noreferrer" aria-label="Sitio oficial de la organización 3, abre en una pestaña nueva">Visitar sitio</a>
+          </article>
+          <article class="card collab-card">
+            <div class="collab-logo" aria-label="Logo o nombre de organización colaboradora 4">Organización 04</div>
+            <h3>Nombre de la organización</h3>
+            <p>También puedes usar esta sección para proyectos compartidos, redes de protección o espacios de divulgación especializados.</p>
+            <a href="https://example.org" target="_blank" rel="noopener noreferrer" aria-label="Sitio oficial de la organización 4, abre en una pestaña nueva">Visitar sitio</a>
+          </article>
+          <article class="card collab-card">
+            <div class="collab-logo" aria-label="Logo o nombre de organización colaboradora 5">Organización 05</div>
+            <h3>Nombre de la organización</h3>
+            <p>Úsalo para una universidad, red académica, colectivo profesional o institución con la que participes regularmente.</p>
+            <a href="https://example.org" target="_blank" rel="noopener noreferrer" aria-label="Sitio oficial de la organización 5, abre en una pestaña nueva">Visitar sitio</a>
+          </article>
+          <article class="card collab-card">
+            <div class="collab-logo" aria-label="Logo o nombre de organización colaboradora 6">Organización 06</div>
+            <h3>Nombre de la organización</h3>
+            <p>Este sexto espacio permite cerrar la red de colaboración sin saturar visualmente la portada.</p>
+            <a href="https://example.org" target="_blank" rel="noopener noreferrer" aria-label="Sitio oficial de la organización 6, abre en una pestaña nueva">Visitar sitio</a>
+          </article>
+        </div>
+      </div>
+    </section>
+    <section class="section" id="eventos">
+      <div class="shell">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">Agenda</div>
+            <h2>Eventos</h2>
+          </div>
+          <p>Aquí puedes anunciar foros, conferencias, charlas preventivas, talleres o participaciones académicas con una estética de panel de misión.</p>
+        </div>
+        <div class="events-grid">
+          <article class="card">
+            <div class="event-card-head">
+              <div class="event-date"><strong>20</strong><span>min</span></div>
+              <div>
+                <div class="meta"><span>Ponencia</span><span>Foro académico</span></div>
+                <h3>Cybercrime in Latin America: Criminological Keys to Understanding an Expanding Phenomenon</h3>
+                <p>Bloque ideal para mostrar fecha, institución, modalidad y enlace de registro de tus próximas participaciones.</p>
+              </div>
+            </div>
+            <div class="event-meta">
+              <span class="chip">Presencial / virtual</span>
+              <span class="chip">Agenda académica</span>
+              <span class="chip">Registro disponible</span>
+            </div>
+          </article>
+          <article class="card">
+            <div class="event-card-head">
+              <div class="event-date"><strong>45</strong><span>min</span></div>
+              <div>
+                <div class="meta"><span>Taller</span><span>Prevención</span></div>
+                <h3>Riesgos digitales actuales para adolescentes: grooming, videojuegos, deepfakes y ciberacoso</h3>
+                <p>Sección pensada para actividades de sensibilización, formación y acompañamiento preventivo.</p>
+              </div>
+            </div>
+            <div class="event-meta">
+              <span class="chip">Secundaria / bachillerato</span>
+              <span class="chip">Concientización</span>
+              <span class="chip">Modalidad flexible</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="sobre-mi">
+      <div class="shell about">
+        <div class="card portrait-card">
+          <div class="panel-label">Perfil</div>
+          <div class="portrait-placeholder" role="img" aria-label="Marcador visual para fotografía o retrato de Mirna Zárate Hernández"></div>
+        </div>
+        <div class="about-copy">
+          <div class="section-head" style="margin-bottom:1rem;">
+            <div>
+              <div class="section-kicker">Identidad</div>
+              <h2>Sobre mí</h2>
+            </div>
+          </div>
+          <p>Sitio personal y editorial para proyectar una identidad especializada en cibercriminología, seguridad digital, investigación aplicada y prevención de riesgos en línea.</p>
+          <p>Aquí puedes reunir artículos, semblanza académica, líneas de trabajo, recursos de formación y proyectos como Radar Digital dentro de una sola presencia web clara, futurista y distintiva.</p>
+          <div class="tag-row" aria-label="Áreas de especialidad">
+            <span class="tag">Cibercriminología</span>
+            <span class="tag">Seguridad digital</span>
+            <span class="tag">Protección infantil</span>
+            <span class="tag">Investigación aplicada</span>
+            <span class="tag">Prevención</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="proyectos">
+      <div class="shell">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">Laboratorio</div>
+            <h2>Proyectos</h2>
+          </div>
+          <p>Este bloque sirve para vincular aplicaciones, hackatones, cursos, ebooks o plataformas de sensibilización digital.</p>
+        </div>
+        <div class="project-grid" style="grid-template-columns:repeat(auto-fit,minmax(240px,1fr));">
+          <article class="card">
+            <div class="meta"><span>App</span><span>Protección</span></div>
+            <h3>Radar Digital</h3>
+            <p>Proyecto orientado a prevención y acompañamiento frente a ciberdelitos que afectan a menores y adolescentes.</p>
+          </article>
+          <article class="card">
+            <div class="meta"><span>Academia</span><span>Docencia</span></div>
+            <h3>Contenido formativo</h3>
+            <p>Espacio para cursos, conferencias, infografías y materiales de divulgación para públicos especializados.</p>
+          </article>
+          <article class="card">
+            <div class="meta"><span>Investigación</span><span>Análisis</span></div>
+            <h3>Observatorio de riesgos</h3>
+            <p>Sección ideal para agrupar series temáticas sobre fraude, sextorsión, ciberacoso, radicalización o IA criminal.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" id="contacto">
+    <div class="shell footer-grid">
+      <div>
+        <div class="mono">Mirna Zárate Hernández</div>
+        <div>Blog / dossier de cibercriminología y seguridad digital</div>
+      </div>
+      <div>
+        <div>Contacto profesional y redes</div>
+        <div>Agrega aquí correo, LinkedIn, ORCID, Instagram profesional o Spotify</div>
+        <div class="social-row" aria-label="Redes sociales">
+          <a class="social-link" href="https://instagram.com/tuusuario" target="_blank" rel="noopener noreferrer" aria-label="Instagram de Mirna Zárate, abre en una pestaña nueva">Instagram</a>
+          <a class="social-link" href="https://www.linkedin.com/in/tuusuario" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn de Mirna Zárate, abre en una pestaña nueva">LinkedIn</a>
+          <a class="social-link" href="https://open.spotify.com/show/tupodcast" target="_blank" rel="noopener noreferrer" aria-label="Spotify de Mirna Zárate, abre en una pestaña nueva">Spotify</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function(){
+      const root=document.documentElement;
+      const toggle=document.querySelector('[data-theme-toggle]');
+      let theme=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';
+      root.setAttribute('data-theme',theme);
+      const apply=()=>{
+        toggle.textContent=theme==='dark'?'Modo claro':'Modo oscuro';
+        toggle.setAttribute('aria-label', theme==='dark'?'Cambiar a modo claro':'Cambiar a modo oscuro');
+      };
+      apply();
+      toggle.addEventListener('click',()=>{theme=theme==='dark'?'light':'dark';root.setAttribute('data-theme',theme);apply();});
+    })();
+  </script>
+</body>
+</html>
