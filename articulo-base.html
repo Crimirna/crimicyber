@@ -18,32 +18,7 @@
       <a href="index.html#sobre-mi">Sobre mí</a>
       <a href="index.html#proyectos">Proyectos</a>
       <a href="index.html#contacto">Contacto</a>
-      <button class="toggle" data-theme-toggle aria-label="Cambiar tema">Modo claro</button>
+      
     </nav>
   </div>
-</header><main id="contenido"><section class="detail"><div class="shell"><div class="section-kicker">Plantilla</div><h1 class="page-title">Título del artículo</h1><p class="intro">Duplica este archivo y cámbiale el nombre para publicar una nueva entrada.</p><div class="article-wrap"><article class="prose"><div class="meta">Fecha · Autor · Categoría</div><p>Introduce aquí el texto de apertura.</p><h2>Subtítulo 1</h2><p>Desarrollo del contenido.</p><h2>Subtítulo 2</h2><p>Más contenido, hallazgos, contexto o recomendaciones.</p></article><aside class="sidebar"><div class="card"><a class="mini-link" href="articulos.html">Regresar</a></div></aside></div></div></section></main><footer class="footer" id="contacto"><div class="shell footer-grid"><div><div class="brand-sub">Crimicyber</div><div>Blog y archivo editorial sobre cibercriminología, prevención y riesgos digitales.</div></div><div><div>Contacto y redes</div><div class="social-row"><a class="social-link" href="https://instagram.com/tuusuario" target="_blank" rel="noopener noreferrer">Instagram</a><a class="social-link" href="https://www.linkedin.com/in/tuusuario" target="_blank" rel="noopener noreferrer">LinkedIn</a><a class="social-link" href="https://open.spotify.com/show/tupodcast" target="_blank" rel="noopener noreferrer">Spotify</a></div></div></div></footer><script>
-(function(){
-  const btn = document.querySelector('[data-theme-toggle]');
-  const root = document.documentElement;
-  let mode = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-  const apply = () => {
-    root.setAttribute('data-theme', mode);
-    if(mode === 'light'){
-      root.style.setProperty('--bg','#edf4fb');
-      root.style.setProperty('--bg2','#ffffff');
-      root.style.setProperty('--surface','rgba(255,255,255,.92)');
-      root.style.setProperty('--surface-2','rgba(248,251,255,.95)');
-      root.style.setProperty('--border','rgba(1,105,111,.18)');
-      root.style.setProperty('--text','#0d1721');
-      root.style.setProperty('--muted','#526576');
-      document.body.style.background='radial-gradient(circle at 12% 68%, rgba(1,105,111,.08), transparent 32%),radial-gradient(circle at 92% 30%, rgba(161,44,123,.08), transparent 28%),linear-gradient(180deg,#f5f9fc 0%,#eaf2f8 100%)';
-    } else {
-      root.style.removeProperty('--bg');root.style.removeProperty('--bg2');root.style.removeProperty('--surface');root.style.removeProperty('--surface-2');root.style.removeProperty('--border');root.style.removeProperty('--text');root.style.removeProperty('--muted');
-      document.body.style.background='radial-gradient(circle at 12% 68%, rgba(0,255,225,.12), transparent 32%),radial-gradient(circle at 92% 30%, rgba(255,79,216,.12), transparent 28%),linear-gradient(180deg,#040a12 0%,#07111b 100%)';
-    }
-    if(btn) btn.textContent = mode === 'dark' ? 'Modo claro' : 'Modo oscuro';
-  };
-  apply();
-  btn && btn.addEventListener('click', ()=>{ mode = mode === 'dark' ? 'light' : 'dark'; apply(); });
-})();
-</script></body></html>
+</header><main id="contenido"><section class="detail"><div class="shell"><div class="section-kicker">Plantilla</div><h1 class="page-title">Título del artículo</h1><p class="intro">Duplica este archivo y cámbiale el nombre para publicar una nueva entrada.</p><div class="article-wrap"><article class="prose"><div class="meta">Fecha · Autor · Categoría</div><p>Introduce aquí el texto de apertura.</p><h2>Subtítulo 1</h2><p>Desarrollo del contenido.</p><h2>Subtítulo 2</h2><p>Más contenido, hallazgos, contexto o recomendaciones.</p></article><aside class="sidebar"><div class="card"><a class="mini-link" href="articulos.html">Regresar</a></div></aside></div></div></section></main><footer class="footer" id="contacto"><div class="shell footer-grid"><div><div class="brand-sub">Crimicyber</div><div>Blog y archivo editorial sobre cibercriminología, prevención y riesgos digitales.</div></div><div><div>Contacto y redes</div><div class="social-row"><a class="social-link" href="https://instagram.com/tuusuario" target="_blank" rel="noopener noreferrer">Instagram</a><a class="social-link" href="mailto:tucorreo@ejemplo.com">Email</a><a class="social-link" href="https://open.spotify.com/show/tupodcast" target="_blank" rel="noopener noreferrer">Spotify</a></div></div></div></footer></body></html>
