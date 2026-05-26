@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Crimicyber — Inicio</title>
+<meta name="description" content="Crimicyber: blog editorial sobre cibercriminología, seguridad digital, investigación y prevención.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Orbitron:wght@500;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#07111b;--bg2:#0c1624;--surface:rgba(14,25,40,.82);--surface-2:rgba(20,35,54,.92);--border:rgba(85,231,255,.18);--text:#eaf6ff;--muted:#9eb6cb;--primary:#53efff;--accent:#ff4fd8;--lime:#d8ff47;--shadow:0 0 0 1px rgba(83,239,255,.12),0 18px 60px rgba(0,0,0,.35);--radius:24px;--radius-sm:16px;--content:1180px;--font-display:'Orbitron',sans-serif;--font-body:'Inter',sans-serif;--font-mono:'Space Mono',monospace}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:var(--font-body);background:radial-gradient(circle at 12% 68%, rgba(0,255,225,.12), transparent 32%),radial-gradient(circle at 92% 30%, rgba(255,79,216,.12), transparent 28%),linear-gradient(180deg,#040a12 0%,#07111b 100%);color:var(--text);line-height:1.7}
+body::before{content:'';position:fixed;inset:0;pointer-events:none;background-image:linear-gradient(rgba(83,239,255,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(83,239,255,.05) 1px,transparent 1px);background-size:72px 72px;mask-image:linear-gradient(180deg,rgba(255,255,255,.35),transparent 82%);opacity:.35}
+.shell{max-width:var(--content);margin:0 auto;padding:0 24px}
+.skip{position:absolute;left:-9999px}
+.skip:focus{left:16px;top:16px;z-index:1000;background:#fff;color:#000;padding:10px 14px}
+.site-header{position:sticky;top:0;z-index:50;background:rgba(4,10,18,.78);backdrop-filter:blur(18px);border-bottom:1px solid rgba(83,239,255,.12)}
+.header-row{display:flex;align-items:center;justify-content:space-between;gap:18px;min-height:84px}
+.brand{display:flex;align-items:center;gap:14px;text-decoration:none;color:var(--text);min-width:0}
+.brand svg{width:46px;height:46px;color:var(--primary);filter:drop-shadow(0 0 12px rgba(83,239,255,.35));flex:0 0 46px}
+.brand-title{font-family:var(--font-display);font-size:1.6rem;letter-spacing:.08em;text-transform:uppercase}
+.brand-sub{font-family:var(--font-mono);font-size:.82rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+.nav{display:flex;align-items:center;gap:22px;flex-wrap:wrap}
+.nav a,.toggle{font-family:var(--font-mono);font-size:.92rem;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;color:var(--text);min-height:44px;display:inline-flex;align-items:center}
+.nav a:hover,.toggle:hover{color:var(--primary)}
+.toggle{border:1px solid var(--border);border-radius:999px;padding:0 14px;background:transparent;cursor:pointer}
+.menu-toggle{display:none;border:1px solid var(--border);border-radius:14px;background:rgba(8,14,25,.84);width:46px;height:46px;align-items:center;justify-content:center;cursor:pointer;padding:0;box-shadow:0 0 0 1px rgba(83,239,255,.08) inset}
+.menu-toggle span{display:block;width:20px;height:2px;background:var(--text);border-radius:999px;transition:transform .24s ease,opacity .24s ease}
+.menu-toggle-inner{display:flex;flex-direction:column;gap:5px}
+.menu-toggle.is-open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.menu-toggle.is-open span:nth-child(2){opacity:0}
+.menu-toggle.is-open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.hero{padding:84px 0 58px}
+.hero-grid{display:grid;grid-template-columns:1.2fr .85fr;gap:36px;align-items:end}
+.eyebrow{display:inline-flex;align-items:center;gap:12px;border:1px solid rgba(83,239,255,.16);border-radius:999px;padding:12px 18px;font-family:var(--font-mono);font-size:.88rem;letter-spacing:.14em;text-transform:uppercase;color:var(--primary);background:linear-gradient(90deg,rgba(83,239,255,.08),rgba(255,79,216,.05))}
+.eyebrow::before{content:'';width:11px;height:11px;border-radius:50%;background:var(--lime);box-shadow:0 0 12px rgba(216,255,71,.7)}
+h1{margin:22px 0 18px;font-family:var(--font-display);font-size:clamp(3rem,7vw,5.5rem);line-height:1.02;letter-spacing:.05em;text-transform:uppercase}
+p.lead{font-size:clamp(1.05rem,2vw,1.45rem);color:#c8d7e5;max-width:24ch}
+.hero-actions,.social-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:28px}
+.btn,.social-link,.mini-link{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:0 18px;border-radius:999px;border:1px solid var(--border);text-decoration:none;color:var(--text);font-family:var(--font-mono);font-size:.86rem;letter-spacing:.09em;text-transform:uppercase;background:rgba(83,239,255,.04)}
+.btn-primary{background:linear-gradient(90deg,rgba(83,239,255,.16),rgba(255,79,216,.11));box-shadow:0 0 0 1px rgba(83,239,255,.14),0 0 24px rgba(83,239,255,.12)}
+.btn:hover,.social-link:hover,.mini-link:hover{color:var(--primary);transform:translateY(-1px)}
+.panel,.card{background:linear-gradient(180deg,rgba(18,31,49,.84),rgba(11,20,34,.92));border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow)}
+.panel{padding:30px}
+.panel h3,.card h3{margin:0 0 10px;font-size:1.45rem}
+.muted{color:var(--muted)}
+.section{padding:40px 0 22px}
+.section-head{display:flex;align-items:end;justify-content:space-between;gap:22px;margin-bottom:24px}
+.section-kicker{font-family:var(--font-mono);font-size:.84rem;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+.section h2{margin:0;font-size:clamp(1.8rem,3vw,2.6rem);font-family:var(--font-display);text-transform:uppercase;letter-spacing:.06em}
+.grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.card{padding:24px}
+.card p{color:var(--muted)}
+.meta{font-family:var(--font-mono);font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--primary);margin-bottom:12px}
+.list-page{padding:62px 0 40px}
+.page-title{margin:0 0 12px;font-family:var(--font-display);font-size:clamp(2.2rem,5vw,4rem);text-transform:uppercase;letter-spacing:.06em}
+.intro{max-width:70ch;color:#c7d8e7}
+.detail{padding:60px 0 48px}
+.article-wrap{display:grid;grid-template-columns:minmax(0,780px) 280px;gap:34px}
+.prose{background:linear-gradient(180deg,rgba(18,31,49,.7),rgba(10,19,31,.92));border:1px solid var(--border);border-radius:var(--radius);padding:34px;box-shadow:var(--shadow)}
+.prose h2{font-family:var(--font-display);font-size:1.7rem;text-transform:uppercase;letter-spacing:.05em;margin:34px 0 12px}
+.prose p,.prose li{color:#d7e4ef}
+.prose ul{padding-left:18px}
+.sidebar{display:grid;gap:16px;align-content:start}
+.footer{padding:36px 0 50px;border-top:1px solid rgba(83,239,255,.12);margin-top:42px}
+.footer-grid{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;color:var(--muted)}
+html,body{max-width:100%;overflow-x:hidden}
+.nav a,.brand,.card,.panel,.prose,p{overflow-wrap:break-word;word-break:break-word}
+.hero h1{overflow-wrap:normal;word-break:normal}
+
+@media (max-width:980px){
+  .header-row{flex-direction:column;align-items:flex-start;justify-content:center;min-height:auto;padding:14px 0}
+  .nav{width:100%;flex-direction:column;align-items:flex-start;gap:10px}
+  .nav a,.toggle{width:100%}
+  .hero-grid,.grid-3,.grid-2,.article-wrap{grid-template-columns:1fr}
+  .section-head{flex-direction:column;align-items:flex-start}
+  .hero{padding:42px 0 28px}
+  .brand-title{font-size:1.05rem}
+  .brand-sub{font-size:.72rem;letter-spacing:.05em}
+}
+
+@media (max-width:640px){
+  body{line-height:1.6}
+  .shell{padding:0 14px}
+  .site-header{overflow:visible}
+  .header-row{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:12px;min-height:auto;padding:12px 0}
+  .brand{width:100%}
+  .brand-title{font-size:1rem;letter-spacing:.06em}
+  .brand-sub{font-size:.66rem;letter-spacing:.06em;line-height:1.25}
+  .menu-toggle{display:inline-flex}
+  .nav{grid-column:1/-1;display:none !important;flex-direction:column;align-items:flex-start;gap:0;width:100%;padding:8px 0 0;background:transparent}
+  .nav.is-open{display:flex !important}
+  .nav a{width:100%;font-size:.82rem;letter-spacing:.06em;padding:10px 0;min-height:44px;border-bottom:1px solid rgba(83,239,255,.10)}
+  .nav a:last-child{border-bottom:none}
+  .hero h1{font-size:clamp(1.7rem,10vw,2.6rem)!important;line-height:1.02;letter-spacing:.03em;overflow-wrap:normal;word-break:normal}
+  .page-title{font-size:clamp(1.8rem,9vw,2.6rem)}
+  .eyebrow,.btn,.social-link,.mini-link{font-size:.78rem;letter-spacing:.05em}
+  .panel,.card,.prose{padding:18px;border-radius:18px}
+  .section{padding:28px 0 14px}
+  .list-page,.detail{padding:36px 0 24px}
+  .hero-grid{gap:24px}
+  .lead{max-width:100%}
+  .panel{margin-top:4px}
+}
+
+@media (min-width:641px){
+  .nav{display:flex !important}
+}
+</style></head><body><a class="skip" href="#contenido">Saltar al contenido</a>
+<header class="site-header">
+  <div class="shell header-row">
+    <a class="brand" href="index.html">
+      <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Logotipo de investigación digital"><path d="M27 12C19.82 12 14 17.82 14 25C14 32.18 19.82 38 27 38C34.18 38 40 32.18 40 25C40 17.82 34.18 12 27 12Z" stroke="currentColor" stroke-width="3"/><path d="M36.5 34.5L50 48" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M27 18V32" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"/><path d="M20 25H34" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"/></svg>
+      <div>
+        <div class="brand-title">Crimicyber</div>
+        <div class="brand-sub">Investigación en entornos digitales</div>
+      </div>
+    </a>
+    <nav class="nav" aria-label="Principal">
+      <a href="articulos.html">Artículos</a>
+      <a href="eventos.html">Eventos</a>
+      <a href="index.html#colaboraciones">Colaboraciones</a>
+      <a href="index.html#sobre-mi">Sobre mí</a>
+      <a href="index.html#proyectos">Proyectos</a>
+      <a href="index.html#contacto">Contacto</a>
+    </nav>
+  </div>
+
+  </header>
+<main id="contenido">
+  <section class="detail">
+    <div class="shell">
+      <div class="section-kicker">Artículo</div>
+      <h1 class="page-title">TikTok como mina de explotación sexual infantil: ¿hasta qué punto falla la protección de los menores?</h1>
+      <p class="intro">
+        TikTok, una mina para depredadores sexuales: niñas y niños expuestos, captación en retos virales y fallos graves en la protección de menores.
+      
+      </p>
+
+            <div class="article-wrap">
+        <article class="prose">
+          <div class="meta">Publicado por Crimicyber</div>
+
+    <h1>TikTok como mina de explotación sexual infantil: ¿hasta qué punto falla la protección de los menores?</h1>
+
+    <p>
+      Diversas investigaciones periodísticas de Maldita.es muestran que TikTok se ha convertido
+      en una plataforma clave para depredadores sexuales infantiles, tanto a través de
+      contenido generado con inteligencia artificial como de vídeos reales de menores.
+      Estas investigaciones evidencian un patrón estructural de vulnerabilidad infantil,
+      aprovechado por redes de pedofilia y reforzado por las propias funciones y algoritmos
+      de la red social.
+    </p>
+
+    <h2>Vídeos generados con IA y contenido real de menores</h2>
+    <p>
+      Se han identificado decenas de cuentas dedicadas a contenidos sexualizados de niñas
+      y adolescentes que acumulan cientos de miles de seguidores. Entre los materiales
+      analizados hay miles de vídeos generados con inteligencia artificial, junto con otros
+      tantos protagonizados por menores reales, incluidos clips robados de las cuentas
+      originales de niños y adolescentes.
+    </p>
+    <p>
+      Este material se utiliza para crear caricaturas sexuales de niñas y adolescentes —con
+      uniformes escolares, trajes ajustados o en contextos sugerentes— y para recopilar,
+      reetiquetar y reutilizar vídeos aparentemente inocentes (bailes, retos, escenas
+      cotidianas), transformándolos en reclamos para comunidades pedófilas.
+    </p>
+
+    <h2>Una puerta hacia la pornografía infantil real</h2>
+    <p>
+      Uno de los hallazgos más graves es que este tipo de contenidos funciona como puerta
+      de acceso a pornografía infantil ilegal alojada en otras plataformas. En los
+      comentarios de los vídeos sexualizados aparecen enlaces a canales de mensajería
+      cifrada y sitios web externos donde se ofrece material de abuso sexual real de
+      menores, ya sea para intercambio o venta.
+    </p>
+    <p>
+      Las investigaciones muestran que existen canales específicos vinculados a este flujo
+      desde TikTok hacia otras aplicaciones, y que parte de ese contenido ha sido denunciado
+      a autoridades policiales por constituir material manifiestamente delictivo.
+    </p>
+
+    <h2>Cuentas monetizadas y papel del algoritmo</h2>
+    <p>
+      No se trata únicamente de usuarios aislados, sino de un ecosistema donde algunas
+      cuentas monetizan estos contenidos mediante sistemas de suscripción, regalos y otras
+      funciones de la propia plataforma, de las que la empresa obtiene un porcentaje
+      económico.
+    </p>
+    <p>
+      Además, el algoritmo de recomendación tiende a amplificar este tipo de vídeos: basta
+      interactuar con unos pocos contenidos sexualizados para que el sistema sugiera más
+      piezas similares en la sección “Para ti” o a través del buscador, aumentando la
+      exposición y facilitando el acceso de depredadores a perfiles de niñas y adolescentes.
+    </p>
+
+    <h2>Normas oficiales frente a la realidad</h2>
+    <p>
+      Sobre el papel, las normas de uso de TikTok prohíben explícitamente las cuentas
+      centradas en imágenes generadas con IA de menores en poses, atuendos o contextos
+      sexualizados, así como cualquier forma de sexualización o fetichización de la infancia.
+    </p>
+    <p>
+      Sin embargo, las pruebas de campo muestran una brecha importante entre la política
+      declarada y su aplicación práctica: múltiples cuentas y vídeos denunciados por
+      sexualizar a menores permanecen activos, y las respuestas de moderación suelen ser
+      tardías, parciales o directamente inexistentes.
+    </p>
+
+    <h2>Más de mil depredadores identificados en los comentarios</h2>
+    <p>
+      El análisis de miles de comentarios en vídeos protagonizados por menores ha permitido
+      detectar a más de un millar de perfiles que se comportan de forma sistemática como
+      depredadores sexuales: piden, intercambian o anuncian material de abuso sexual
+      infantil, muchas veces a plena vista.
+    </p>
+    <p>
+      Estos usuarios emplean códigos y expresiones aparentemente inocuas para reconocerse
+      entre ellos y evitar los filtros automáticos, incluyendo combinaciones numéricas y
+      siglas que remiten a pornografía infantil o a intercambios de contenido.
+    </p>
+
+    <h2>Cinco estrategias para “cazar” menores en TikTok</h2>
+    <p>
+      Las investigaciones describen, entre otras, cinco tácticas recurrentes utilizadas por
+      depredadores para localizar y contactar con niñas, niños y adolescentes dentro de la
+      plataforma:
+    </p>
+    <ul>
+      <li>
+        <strong>Solicitudes abiertas por edad:</strong> comentarios del tipo “las de 2012,
+        2013, 2014 dejen sus fotos”, dirigidos específicamente a niñas preadolescentes y
+        adolescentes, que derivan en miles de imágenes y millones de visualizaciones.
+      </li>
+      <li>
+        <strong>“Virtualitos” o noviazgos virtuales:</strong> tendencias que fomentan que
+        niños y niñas busquen “novios virtuales” y que son aprovechadas por adultos para
+        obtener fotos, contactos y, en algunos casos, datos de localización de menores de
+        entre 6 y 12 años.
+      </li>
+      <li>
+        <strong>Plantillas de edad + foto:</strong> formatos de edición que invitan a
+        compartir una foto junto con la edad, lo que concentra grandes volúmenes de
+        contenidos de menores de 9 a 13 años y atrae comentarios de usuarios adultos.
+      </li>
+      <li>
+        <strong>Retos de intercambio de fotos íntimas:</strong> dinámicas tipo “califico tu
+        foto” asociadas a partes del cuerpo, donde se piden imágenes de pecho o genitales y
+        se especifican franjas de edad extremadamente preocupantes.
+      </li>
+      <li>
+        <strong>Grupos “hormonales” en apps externas:</strong> espacios en servicios de
+        mensajería donde se anima a menores a compartir fotos o vídeos sexualizados, a
+        menudo tras haber iniciado la interacción en TikTok.
+      </li>
+    </ul>
+
+    <h2>Fallas en la detección y en la respuesta</h2>
+    <p>
+      Cuando se denuncian comentarios que solicitan abiertamente pornografía infantil, la
+      plataforma elimina en muchos casos los mensajes concretos, pero no siempre actúa
+      contra las cuentas responsables, que continúan activas y operando con normalidad.
+    </p>
+    <p>
+      Asimismo, incluso cuando se reportan perfiles que afirman tener menos de la edad
+      mínima permitida, la respuesta suele ser inconsistente. Todo ello pone en cuestión la
+      efectividad real de los sistemas de detección automática y de los equipos de
+      moderación dedicados a proteger a la infancia.
+    </p>
+
+    <h2>Impacto en niñas, niños y adolescentes</h2>
+    <p>
+      Estas dinámicas no solo incrementan el riesgo de exposición de menores a contenidos
+      sexuales, sino que facilitan procesos de grooming, en los que personas adultas
+      establecen vínculos de confianza con los niños para conducirlos progresivamente hacia
+      interacciones sexuales.
+    </p>
+    <p>
+      También se multiplican los casos de difusión no consentida de imágenes íntimas y de
+      sextorsión, en los que los agresores amenazan con publicar o compartir el material si
+      el menor no accede a nuevas demandas, profundizando el daño psicológico y social.
+    </p>
+
+    <h2>Prevención, regulación y corresponsabilidad</h2>
+    <p>
+      Frente a este escenario, es imprescindible reforzar la educación digital crítica de
+      menores y familias, incorporando de forma clara cómo se instrumentalizan tendencias,
+      retos y códigos aparentemente inocentes para fines de explotación sexual.
+    </p>
+    <p>
+      De igual forma, resulta urgente avanzar en auditorías independientes de algoritmos y
+      políticas de moderación, en el marco de regulaciones como la Ley de Servicios
+      Digitales y las normativas de protección de la infancia, así como mejorar los
+      protocolos de denuncia y coordinación entre plataformas, fuerzas de seguridad y
+      servicios de atención a víctimas.
+    </p>
+    <p>
+      La protección efectiva de la infancia en entornos digitales exige una corresponsabilidad
+      real entre empresas tecnológicas, instituciones públicas, familias, profesionales de
+      la educación y especialistas en ciberseguridad y criminología que investigan y
+      visibilizan estas dinámicas.
+    </p>
+
+    <p>
+      Si trabajas con menores, eres madre, padre o persona cuidadora, te invito a revisar
+      las guías y recursos de seguridad digital que encontrarás en esta web, y a incorporar
+      estas reflexiones en tus conversaciones cotidianas sobre el uso de redes sociales.
+    </p>
+  </article>
+
+  <aside class="sidebar">
+    <a class="mini-link" href="articulos.html">Regresar</a>
+
+    <div class="card">
+      <div class="meta">Idea central</div>
+      <p>
+        TikTok puede funcionar como un entorno de captación, sexualización y derivación
+        hacia redes de explotación sexual infantil cuando fallan la moderación, la detección
+        y la protección efectiva de menores.
+            </p>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+</main>
+<footer class="footer" id="contacto"><div class="shell footer-grid"><div><div class="brand-sub">Crimicyber</div><div>© 2026 Mirna Zárate. Todos los derechos reservados.</div></div><div><div>Contacto y redes</div><div class="social-row"><a class="social-link" href="https://instagram.com/crimicyber_oficial" target="_blank" rel="noopener noreferrer">Instagram</a><a class="social-link" href="mailto:crimicyber.oficial@gmail.com">Email</a><a class="social-link" href="https://open.spotify.com/show/tupodcast" target="_blank" rel="noopener noreferrer">Spotify</a></div></div></div></footer></body></html>
