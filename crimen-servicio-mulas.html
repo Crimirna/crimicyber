@@ -1,0 +1,448 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Crimicyber — Inicio</title>
+<meta name="description" content="Crimicyber: blog editorial sobre cibercriminología, seguridad digital, investigación y prevención.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Orbitron:wght@500;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#07111b;--bg2:#0c1624;--surface:rgba(14,25,40,.82);--surface-2:rgba(20,35,54,.92);--border:rgba(85,231,255,.18);--text:#eaf6ff;--muted:#9eb6cb;--primary:#53efff;--accent:#ff4fd8;--lime:#d8ff47;--shadow:0 0 0 1px rgba(83,239,255,.12),0 18px 60px rgba(0,0,0,.35);--radius:24px;--radius-sm:16px;--content:1180px;--font-display:'Orbitron',sans-serif;--font-body:'Inter',sans-serif;--font-mono:'Space Mono',monospace}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:var(--font-body);background:radial-gradient(circle at 12% 68%, rgba(0,255,225,.12), transparent 32%),radial-gradient(circle at 92% 30%, rgba(255,79,216,.12), transparent 28%),linear-gradient(180deg,#040a12 0%,#07111b 100%);color:var(--text);line-height:1.7}
+body::before{content:'';position:fixed;inset:0;pointer-events:none;background-image:linear-gradient(rgba(83,239,255,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(83,239,255,.05) 1px,transparent 1px);background-size:72px 72px;mask-image:linear-gradient(180deg,rgba(255,255,255,.35),transparent 82%);opacity:.35}
+.shell{max-width:var(--content);margin:0 auto;padding:0 24px}
+.skip{position:absolute;left:-9999px}
+.skip:focus{left:16px;top:16px;z-index:1000;background:#fff;color:#000;padding:10px 14px}
+.site-header{position:sticky;top:0;z-index:50;background:rgba(4,10,18,.78);backdrop-filter:blur(18px);border-bottom:1px solid rgba(83,239,255,.12)}
+.header-row{display:flex;align-items:center;justify-content:space-between;gap:18px;min-height:84px}
+.brand{display:flex;align-items:center;gap:14px;text-decoration:none;color:var(--text);min-width:0}
+.brand svg{width:46px;height:46px;color:var(--primary);filter:drop-shadow(0 0 12px rgba(83,239,255,.35));flex:0 0 46px}
+.brand-title{font-family:var(--font-display);font-size:1.6rem;letter-spacing:.08em;text-transform:uppercase}
+.brand-sub{font-family:var(--font-mono);font-size:.82rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+.nav{display:flex;align-items:center;gap:22px;flex-wrap:wrap}
+.nav a,.toggle{font-family:var(--font-mono);font-size:.92rem;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;color:var(--text);min-height:44px;display:inline-flex;align-items:center}
+.nav a:hover,.toggle:hover{color:var(--primary)}
+.toggle{border:1px solid var(--border);border-radius:999px;padding:0 14px;background:transparent;cursor:pointer}
+.menu-toggle{display:none;border:1px solid var(--border);border-radius:14px;background:rgba(8,14,25,.84);width:46px;height:46px;align-items:center;justify-content:center;cursor:pointer;padding:0;box-shadow:0 0 0 1px rgba(83,239,255,.08) inset}
+.menu-toggle span{display:block;width:20px;height:2px;background:var(--text);border-radius:999px;transition:transform .24s ease,opacity .24s ease}
+.menu-toggle-inner{display:flex;flex-direction:column;gap:5px}
+.menu-toggle.is-open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.menu-toggle.is-open span:nth-child(2){opacity:0}
+.menu-toggle.is-open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.hero{padding:84px 0 58px}
+.hero-grid{display:grid;grid-template-columns:1.2fr .85fr;gap:36px;align-items:end}
+.eyebrow{display:inline-flex;align-items:center;gap:12px;border:1px solid rgba(83,239,255,.16);border-radius:999px;padding:12px 18px;font-family:var(--font-mono);font-size:.88rem;letter-spacing:.14em;text-transform:uppercase;color:var(--primary);background:linear-gradient(90deg,rgba(83,239,255,.08),rgba(255,79,216,.05))}
+.eyebrow::before{content:'';width:11px;height:11px;border-radius:50%;background:var(--lime);box-shadow:0 0 12px rgba(216,255,71,.7)}
+h1{margin:22px 0 18px;font-family:var(--font-display);font-size:clamp(3rem,7vw,5.5rem);line-height:1.02;letter-spacing:.05em;text-transform:uppercase}
+p.lead{font-size:clamp(1.05rem,2vw,1.45rem);color:#c8d7e5;max-width:24ch}
+.hero-actions,.social-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:28px}
+.btn,.social-link,.mini-link{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:0 18px;border-radius:999px;border:1px solid var(--border);text-decoration:none;color:var(--text);font-family:var(--font-mono);font-size:.86rem;letter-spacing:.09em;text-transform:uppercase;background:rgba(83,239,255,.04)}
+.btn-primary{background:linear-gradient(90deg,rgba(83,239,255,.16),rgba(255,79,216,.11));box-shadow:0 0 0 1px rgba(83,239,255,.14),0 0 24px rgba(83,239,255,.12)}
+.btn:hover,.social-link:hover,.mini-link:hover{color:var(--primary);transform:translateY(-1px)}
+.panel,.card{background:linear-gradient(180deg,rgba(18,31,49,.84),rgba(11,20,34,.92));border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow)}
+.panel{padding:30px}
+.panel h3,.card h3{margin:0 0 10px;font-size:1.45rem}
+.muted{color:var(--muted)}
+.section{padding:40px 0 22px}
+.section-head{display:flex;align-items:end;justify-content:space-between;gap:22px;margin-bottom:24px}
+.section-kicker{font-family:var(--font-mono);font-size:.84rem;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+.section h2{margin:0;font-size:clamp(1.8rem,3vw,2.6rem);font-family:var(--font-display);text-transform:uppercase;letter-spacing:.06em}
+.grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.card{padding:24px}
+.card p{color:var(--muted)}
+.meta{font-family:var(--font-mono);font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--primary);margin-bottom:12px}
+.list-page{padding:62px 0 40px}
+.page-title{margin:0 0 12px;font-family:var(--font-display);font-size:clamp(2.2rem,5vw,4rem);text-transform:uppercase;letter-spacing:.06em}
+.intro{max-width:70ch;color:#c7d8e7}
+.detail{padding:60px 0 48px}
+.article-wrap{display:grid;grid-template-columns:minmax(0,780px) 280px;gap:34px}
+.prose{background:linear-gradient(180deg,rgba(18,31,49,.7),rgba(10,19,31,.92));border:1px solid var(--border);border-radius:var(--radius);padding:34px;box-shadow:var(--shadow)}
+.prose h2{font-family:var(--font-display);font-size:1.7rem;text-transform:uppercase;letter-spacing:.05em;margin:34px 0 12px}
+.prose p,.prose li{color:#d7e4ef}
+.prose ul{padding-left:18px}
+.sidebar{display:grid;gap:16px;align-content:start}
+.footer{padding:36px 0 50px;border-top:1px solid rgba(83,239,255,.12);margin-top:42px}
+.footer-grid{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;color:var(--muted)}
+html,body{max-width:100%;overflow-x:hidden}
+.nav a,.brand,.card,.panel,.prose,p{overflow-wrap:break-word;word-break:break-word}
+.hero h1{overflow-wrap:normal;word-break:normal}
+
+@media (max-width:980px){
+  .header-row{flex-direction:column;align-items:flex-start;justify-content:center;min-height:auto;padding:14px 0}
+  .nav{width:100%;flex-direction:column;align-items:flex-start;gap:10px}
+  .nav a,.toggle{width:100%}
+  .hero-grid,.grid-3,.grid-2,.article-wrap{grid-template-columns:1fr}
+  .section-head{flex-direction:column;align-items:flex-start}
+  .hero{padding:42px 0 28px}
+  .brand-title{font-size:1.05rem}
+  .brand-sub{font-size:.72rem;letter-spacing:.05em}
+}
+
+@media (max-width:640px){
+  body{line-height:1.6}
+  .shell{padding:0 14px}
+  .site-header{overflow:visible}
+  .header-row{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:12px;min-height:auto;padding:12px 0}
+  .brand{width:100%}
+  .brand-title{font-size:1rem;letter-spacing:.06em}
+  .brand-sub{font-size:.66rem;letter-spacing:.06em;line-height:1.25}
+  .menu-toggle{display:inline-flex}
+  .nav{grid-column:1/-1;display:none !important;flex-direction:column;align-items:flex-start;gap:0;width:100%;padding:8px 0 0;background:transparent}
+  .nav.is-open{display:flex !important}
+  .nav a{width:100%;font-size:.82rem;letter-spacing:.06em;padding:10px 0;min-height:44px;border-bottom:1px solid rgba(83,239,255,.10)}
+  .nav a:last-child{border-bottom:none}
+  .hero h1{font-size:clamp(1.7rem,10vw,2.6rem)!important;line-height:1.02;letter-spacing:.03em;overflow-wrap:normal;word-break:normal}
+  .page-title{font-size:clamp(1.8rem,9vw,2.6rem)}
+  .eyebrow,.btn,.social-link,.mini-link{font-size:.78rem;letter-spacing:.05em}
+  .panel,.card,.prose{padding:18px;border-radius:18px}
+  .section{padding:28px 0 14px}
+  .list-page,.detail{padding:36px 0 24px}
+  .hero-grid{gap:24px}
+  .lead{max-width:100%}
+  .panel{margin-top:4px}
+}
+
+@media (min-width:641px){
+  .nav{display:flex !important}
+}
+</style></head><body><a class="skip" href="#contenido">Saltar al contenido</a>
+<header class="site-header">
+  <div class="shell header-row">
+    <a class="brand" href="index.html">
+      <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Logotipo de investigación digital"><path d="M27 12C19.82 12 14 17.82 14 25C14 32.18 19.82 38 27 38C34.18 38 40 32.18 40 25C40 17.82 34.18 12 27 12Z" stroke="currentColor" stroke-width="3"/><path d="M36.5 34.5L50 48" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M27 18V32" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"/><path d="M20 25H34" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"/></svg>
+      <div>
+        <div class="brand-title">Crimicyber</div>
+        <div class="brand-sub">Investigación en entornos digitales</div>
+      </div>
+    </a>
+    <nav class="nav" aria-label="Principal">
+      <a href="articulos.html">Artículos</a>
+      <a href="eventos.html">Eventos</a>
+      <a href="index.html#colaboraciones">Colaboraciones</a>
+      <a href="index.html#sobre-mi">Sobre mí</a>
+      <a href="index.html#proyectos">Proyectos</a>
+      <a href="index.html#contacto">Contacto</a>
+      
+    </nav>
+  </div>
+</header>
+<main id="contenido">
+  <section class="detail">
+    <div class="shell">
+      <div class="section-kicker">Artículo</div>
+      <h1 class="page-title">Crimen como servicio y mulas digitales</h1>
+      <p class="intro">
+        Cómo el Crimen como Servicio recluta a jóvenes como mulas digitales y qué hacer para prevenirlo desde familias y comunidades
+      </p>
+
+      <div class="article-wrap">
+        <article class="prose">
+          <div class="meta">Publicado por Crimicyber</div>
+
+       <p>
+      Durante años, el imaginario del crimen organizado se centraba en grandes capos, maletines
+      de dinero y reuniones en la oscuridad. Hoy, muchas de esas operaciones pasan por la cuenta
+      bancaria, la app fintech o la billetera digital de un chico o una chica que solo quería
+      “ganar dinerito extra” desde su celular.
+    </p>
+
+    <p>
+      A esa figura se le conoce como <strong>mula digital</strong>: jóvenes que prestan sus cuentas
+      para mover dinero ajeno a cambio de una comisión, sin entender del todo que están participando
+      en esquemas de fraude, lavado de dinero u otros delitos financieros. Y detrás de ellos hay un
+      ecosistema creciente al que se le llama <strong>Crimen como Servicio</strong>
+      (<em>Crime as a Service</em>), donde el delito se “subcontrata” como si fuera un servicio
+      cualquiera.
+    </p>
+
+    <h2>¿Qué es el crimen como servicio?</h2>
+    <p>
+      El Crimen como Servicio es un modelo en el que grupos o individuos ofrecen servicios
+      criminales a otros delincuentes o clientes, de forma modular y bajo demanda. Es una especie
+      de “economía de plataformas” aplicada al delito: no necesitas saber hacerlo todo; basta con
+      pagarle a alguien que se especializa en cada parte del proceso.
+    </p>
+
+    <p>
+      En el ámbito digital, esto puede incluir venta de datos robados, alquiler de infraestructuras
+      para ataques, diseño de malware, servicios de phishing, cuentas falsas listas para usar y,
+      por supuesto, servicios de movimiento de dinero a través de mulas digitales. En esencia,
+      se tercerizan las partes más riesgosas del delito para que la cúpula criminal se mantenga lo
+      más lejos posible de la ejecución cotidiana.
+    </p>
+
+    <p>
+      En este esquema, el papel del joven como mula digital se vuelve muy atractivo para los grupos
+      criminales:
+    </p>
+
+    <ul>
+      <li>
+        Es relativamente sencillo reclutarlo a través de redes sociales, apps de mensajería o
+        entornos de gaming.
+      </li>
+      <li>
+        Su participación es fácilmente reemplazable si algo sale mal.
+      </li>
+      <li>
+        En muchos casos, las autoridades y las instituciones financieras se encuentran primero con
+        la mula, no con quienes realmente controlan el flujo de dinero.
+      </li>
+    </ul>
+
+    <h2>¿Qué es una mula digital y por qué muchos no se sienten delincuentes?</h2>
+    <p>
+      Una mula digital es una persona que, a sabiendas o no, permite que dinero ilícito pase por
+      sus cuentas —bancarias, fintech, tarjetas prepago, billeteras de criptomonedas—, para luego
+      transferirlo a otras personas o retirarlo en efectivo, recibiendo a cambio una pequeña parte
+      como “comisión”.
+    </p>
+
+    <p>
+      En el caso de los jóvenes, la narrativa suele ser muy distinta a la del “delincuente típico”.
+      Ellos se describen como:
+    </p>
+
+    <ul>
+      <li>“Solo presté mi cuenta.”</li>
+      <li>“Era un favor para un amigo.”</li>
+      <li>“Pensé que era un trabajo remoto legítimo.”</li>
+    </ul>
+
+    <p>
+      Desde la criminología, esto se relaciona con las llamadas <strong>técnicas de neutralización</strong>:
+      formas de justificar la propia conducta para no sentir culpa ni identificarse como
+      delincuentes. Algunos ejemplos:
+    </p>
+
+    <ul>
+      <li>
+        <strong>Negación del daño:</strong> “No robé a nadie, solo moví dinero.”
+      </li>
+      <li>
+        <strong>Apelación a la necesidad:</strong> “Lo hice porque necesitaba pagar la escuela /
+        ayudar en casa.”
+      </li>
+      <li>
+        <strong>Transferencia de responsabilidad:</strong> “Si fuera ilegal, el banco no hubiera
+        dejado pasar el dinero.”
+      </li>
+    </ul>
+
+    <p>
+      Este autorelato es peligroso, porque mientras se convencen de que “no están haciendo nada
+      grave”, su nombre, sus datos y sus cuentas quedan directamente vinculados a operaciones de
+      fraude, estafa o lavado de dinero.
+    </p>
+
+    <h2>Cómo reclutan a jóvenes: de las redes al gaming</h2>
+    <p>
+      El reclutamiento de mulas digitales rara vez se presenta como “te invito a cometer un
+      delito”. Se disfraza de oportunidad, favor o trabajo flexible. Hay varios canales típicos.
+    </p>
+
+    <h3>1. Ofertas de “trabajo” en redes sociales</h3>
+    <p>
+      Aparecen publicaciones o historias que prometen:
+    </p>
+
+    <ul>
+      <li>“Gana dinero rápido desde casa.”</li>
+      <li>“Trabajo para estudiantes, sin experiencia.”</li>
+      <li>“Solo necesitas una cuenta bancaria o app para recibir pagos.”</li>
+    </ul>
+
+    <p>
+      La dinámica suele ser:
+    </p>
+
+    <ul>
+      <li>
+        El joven rellena un formulario o escribe por mensaje directo.
+      </li>
+      <li>
+        Recibe una “entrevista” muy superficial, donde lo principal es confirmar que tiene cuenta
+        bancaria o acceso a apps financieras.
+      </li>
+      <li>
+        Le explican que su “trabajo” será recibir transferencias y reenviarlas, o retirar efectivo
+        y entregarlo a alguien, a cambio de una comisión.
+      </li>
+    </ul>
+
+    <p>
+      En ningún momento se mencionan palabras como fraude, lavado o delito; al contrario, se
+      utilizan términos como “gestor de pagos”, “intermediario financiero” o “embajador de pagos”.
+    </p>
+
+    <h3>2. Grooming financiero en chats y mensajería</h3>
+    <p>
+      Otra estrategia es el <strong>grooming financiero</strong>: la construcción de una relación
+      de confianza para luego pedir favores vinculados al movimiento de dinero.
+    </p>
+
+    <p>
+      Puede ser alguien que se hace pasar por:
+    </p>
+
+    <ul>
+      <li>Amigo de un amigo.</li>
+      <li>“Mentor” en inversiones o criptomonedas.</li>
+      <li>
+        Pareja potencial que, tras semanas de conversación, pide un “pequeño favor financiero”.
+      </li>
+    </ul>
+
+    <p>
+      El favor habitualmente es:
+    </p>
+
+    <ul>
+      <li>
+        Prestar la cuenta para recibir dinero “que luego se enviará a familiares” o “para un
+        negocio en otro país”.
+      </li>
+      <li>Registrar una app financiera a nombre del joven.</li>
+    </ul>
+
+    <p>
+      La afectividad y la confianza se vuelven herramientas de control: “Si de verdad confías en
+      mí, ayúdame con esto”, “Si no quieres, dime y busco a alguien más, pero pensé que éramos
+      equipo”.
+    </p>
+
+    <h3>3. Gaming y comunidades digitales</h3>
+    <p>
+      Los entornos de gaming y plataformas de streaming también se han convertido en semilleros
+      para mulas digitales. A través de chat en juegos, servidores de Discord o plataformas de
+      torneos, algunos reclutadores ofrecen:
+    </p>
+
+    <ul>
+      <li>“Patrocinios” o pequeñas sumas de dinero.</li>
+      <li>Créditos dentro del juego, <em>skins</em> o beneficios especiales.</li>
+      <li>
+        Premios por mover dinero para “el equipo” o “la comunidad”.
+      </li>
+    </ul>
+
+    <p>
+      El discurso se normaliza como parte de la cultura gamer: “Todos aquí lo hacemos”, “Es una
+      manera de apoyar al clan”, “Es solo para pagar servidores, nada ilegal”. Sin embargo, detrás
+      puede haber desde esquemas de fraude con tarjetas robadas hasta lavado de fondos procedentes
+      de otros delitos.
+    </p>
+
+    <h3>4. Cadena entre pares</h3>
+    <p>
+      Una vez que un joven se convierte en mula, no es raro que el grupo criminal le ofrezca más
+      comisión si recluta a sus amigos. Así, se crea una cadena entre pares:
+    </p>
+
+    <ul>
+      <li>“Te paso este negocio porque confío en ti.”</li>
+      <li>“Yo ya lo hice y no pasó nada, anímate.”</li>
+    </ul>
+
+    <p>
+      Esto reduce aún más la percepción de riesgo y aumenta la sensación de que se trata de algo
+      “normal” entre su círculo.
+    </p>
+
+    <h2>Señales de que un joven puede estar siendo usado como mula</h2>
+    <p>
+      Para familias, docentes y personas adultas de referencia, hay varias señales que pueden
+      encender la alarma:
+    </p>
+
+    <ul>
+      <li>
+        <strong>Incremento repentino de dinero:</strong> el joven tiene más efectivo, gadgets,
+        ropa o gastos que no se explican por su empleo formal, beca o apoyo familiar.
+      </li>
+      <li>
+        <strong>Multiplicidad de cuentas y apps:</strong> usa varias cuentas bancarias, tarjetas
+        o aplicaciones financieras y evita explicar por qué las necesita.
+      </li>
+      <li>
+        <strong>Conductas evasivas:</strong> se molesta, cambia de tema o se pone a la defensiva
+        cuando se le pregunta por el origen de sus ingresos.
+      </li>
+      <li>
+        <strong>Lenguaje justificante:</strong> expresiones como “solo presto mi cuenta”, “no
+        toco el dinero, solo pasa por mí”, “si fuera ilegal, el banco lo bloquearía”.
+      </li>
+      <li>
+        <strong>Presión externa:</strong> recibe muchos mensajes insistentes sobre tiempos de
+        transferencia, montos exactos, comprobantes o fotos de recibos.
+      </li>
+    </ul>
+
+    <h2>Estrategias de prevención</h2>
+    <p>
+      La prevención no puede basarse solo en el miedo; debe integrar información, diálogo y
+      herramientas concretas.
+    </p>
+
+    <h3>Mensajes para jóvenes</h3>
+    <p>
+      <strong>Tu cuenta no es un servicio de lavandería:</strong> si alguien quiere usar tu
+      cuenta para mover dinero, no te ve como socio, sino como escudo.
+    </p>
+
+    <p>
+      <strong>Un trabajo legal deja rastro formal:</strong> datos verificables de empresa u
+      organización, contrato o acuerdos por escrito y canales oficiales; pagos que se hacen
+      desde cuentas institucionales, no desde desconocidos.
+    </p>
+
+    <p>
+      <strong>“Si no harías algo en tu nombre, no lo hagas con tu cuenta”:</strong> aunque parezca
+      que “solo pasa el dinero”, legalmente eres parte de la operación.
+    </p>
+
+    <p>
+      Un enfoque útil es hablar de autoprotección de futuro: cuidar su historial financiero y su
+      reputación digital como un capital que necesitan para estudiar, trabajar, viajar o emprender.
+    </p>
+
+    <h3>Claves para familias</h3>
+    <p>
+      <strong>Hablar de dinero sin tabúes:</strong> conversar sobre ingresos, gastos, trabajos en
+      línea y ofrecerse como primera opción para revisar cualquier oferta sospechosa. La meta es
+      que te vean como aliada, no como fiscal.
+    </p>
+
+    <p>
+      <strong>Establecer acuerdos sobre cuentas y apps:</strong> en menores de edad, acordar qué
+      tipo de cuentas pueden abrir y bajo qué condiciones; revisar periódicamente, en confianza,
+      los movimientos de las apps financieras que utilizan.
+    </p>
+
+    <p>
+      <strong>Validar la necesidad económica:</strong> si el joven busca trabajo porque siente
+      presión económica, es mejor abordarlo directamente que dejar ese vacío para que lo llenen
+      las “oportunidades milagro” que ofrecen los delincuentes.
+    </p>
+  </article>
+
+  <aside class="sidebar">
+    <a class="mini-link" href="articulos.html">Regresar</a>
+
+    <div class="card">
+      <div class="meta">Idea central</div>
+      <p>
+        El Crimen como Servicio convierte a jóvenes en mulas digitales bajo la apariencia de
+        trabajos fáciles, mientras sus cuentas y su futuro financiero quedan vinculados a
+        fraude y lavado de dinero.
+      </p>
+    </div>
+  </aside>
+</div>
+ <footer class="footer" id="contacto"><div class="shell footer-grid"><div><div class="brand-sub">Crimicyber</div><div>© 2026 Mirna Zárate. Todos los derechos reservados.</div></div><div><div>Contacto y redes</div><div class="social-row"><a class="social-link" href="https://instagram.com/crimicyber_oficial" target="_blank" rel="noopener noreferrer">Instagram</a><a class="social-link" href="mailto:crimicyber.oficial@gmail.com">Email</a><a class="social-link" href="https://open.spotify.com/show/tupodcast" target="_blank" rel="noopener noreferrer">Spotify</a></div></div></div></footer></body></html>
+
