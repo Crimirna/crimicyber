@@ -1,0 +1,470 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Crimicyber — Inicio</title>
+<meta name="description" content="Crimicyber: blog editorial sobre cibercriminología, seguridad digital, investigación y prevención.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Orbitron:wght@500;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#07111b;--bg2:#0c1624;--surface:rgba(14,25,40,.82);--surface-2:rgba(20,35,54,.92);--border:rgba(85,231,255,.18);--text:#eaf6ff;--muted:#9eb6cb;--primary:#53efff;--accent:#ff4fd8;--lime:#d8ff47;--shadow:0 0 0 1px rgba(83,239,255,.12),0 18px 60px rgba(0,0,0,.35);--radius:24px;--radius-sm:16px;--content:1180px;--font-display:'Orbitron',sans-serif;--font-body:'Inter',sans-serif;--font-mono:'Space Mono',monospace}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:var(--font-body);background:radial-gradient(circle at 12% 68%, rgba(0,255,225,.12), transparent 32%),radial-gradient(circle at 92% 30%, rgba(255,79,216,.12), transparent 28%),linear-gradient(180deg,#040a12 0%,#07111b 100%);color:var(--text);line-height:1.7}
+body::before{content:'';position:fixed;inset:0;pointer-events:none;background-image:linear-gradient(rgba(83,239,255,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(83,239,255,.05) 1px,transparent 1px);background-size:72px 72px;mask-image:linear-gradient(180deg,rgba(255,255,255,.35),transparent 82%);opacity:.35}
+.shell{max-width:var(--content);margin:0 auto;padding:0 24px}
+.skip{position:absolute;left:-9999px}
+.skip:focus{left:16px;top:16px;z-index:1000;background:#fff;color:#000;padding:10px 14px}
+.site-header{position:sticky;top:0;z-index:50;background:rgba(4,10,18,.78);backdrop-filter:blur(18px);border-bottom:1px solid rgba(83,239,255,.12)}
+.header-row{display:flex;align-items:center;justify-content:space-between;gap:18px;min-height:84px}
+.brand{display:flex;align-items:center;gap:14px;text-decoration:none;color:var(--text);min-width:0}
+.brand svg{width:46px;height:46px;color:var(--primary);filter:drop-shadow(0 0 12px rgba(83,239,255,.35));flex:0 0 46px}
+.brand-title{font-family:var(--font-display);font-size:1.6rem;letter-spacing:.08em;text-transform:uppercase}
+.brand-sub{font-family:var(--font-mono);font-size:.82rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+.nav{display:flex;align-items:center;gap:22px;flex-wrap:wrap}
+.nav a,.toggle{font-family:var(--font-mono);font-size:.92rem;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;color:var(--text);min-height:44px;display:inline-flex;align-items:center}
+.nav a:hover,.toggle:hover{color:var(--primary)}
+.toggle{border:1px solid var(--border);border-radius:999px;padding:0 14px;background:transparent;cursor:pointer}
+.menu-toggle{display:none;border:1px solid var(--border);border-radius:14px;background:rgba(8,14,25,.84);width:46px;height:46px;align-items:center;justify-content:center;cursor:pointer;padding:0;box-shadow:0 0 0 1px rgba(83,239,255,.08) inset}
+.menu-toggle span{display:block;width:20px;height:2px;background:var(--text);border-radius:999px;transition:transform .24s ease,opacity .24s ease}
+.menu-toggle-inner{display:flex;flex-direction:column;gap:5px}
+.menu-toggle.is-open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.menu-toggle.is-open span:nth-child(2){opacity:0}
+.menu-toggle.is-open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.hero{padding:84px 0 58px}
+.hero-grid{display:grid;grid-template-columns:1.2fr .85fr;gap:36px;align-items:end}
+.eyebrow{display:inline-flex;align-items:center;gap:12px;border:1px solid rgba(83,239,255,.16);border-radius:999px;padding:12px 18px;font-family:var(--font-mono);font-size:.88rem;letter-spacing:.14em;text-transform:uppercase;color:var(--primary);background:linear-gradient(90deg,rgba(83,239,255,.08),rgba(255,79,216,.05))}
+.eyebrow::before{content:'';width:11px;height:11px;border-radius:50%;background:var(--lime);box-shadow:0 0 12px rgba(216,255,71,.7)}
+h1{margin:22px 0 18px;font-family:var(--font-display);font-size:clamp(3rem,7vw,5.5rem);line-height:1.02;letter-spacing:.05em;text-transform:uppercase}
+p.lead{font-size:clamp(1.05rem,2vw,1.45rem);color:#c8d7e5;max-width:24ch}
+.hero-actions,.social-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:28px}
+.btn,.social-link,.mini-link{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:0 18px;border-radius:999px;border:1px solid var(--border);text-decoration:none;color:var(--text);font-family:var(--font-mono);font-size:.86rem;letter-spacing:.09em;text-transform:uppercase;background:rgba(83,239,255,.04)}
+.btn-primary{background:linear-gradient(90deg,rgba(83,239,255,.16),rgba(255,79,216,.11));box-shadow:0 0 0 1px rgba(83,239,255,.14),0 0 24px rgba(83,239,255,.12)}
+.btn:hover,.social-link:hover,.mini-link:hover{color:var(--primary);transform:translateY(-1px)}
+.panel,.card{background:linear-gradient(180deg,rgba(18,31,49,.84),rgba(11,20,34,.92));border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow)}
+.panel{padding:30px}
+.panel h3,.card h3{margin:0 0 10px;font-size:1.45rem}
+.muted{color:var(--muted)}
+.section{padding:40px 0 22px}
+.section-head{display:flex;align-items:end;justify-content:space-between;gap:22px;margin-bottom:24px}
+.section-kicker{font-family:var(--font-mono);font-size:.84rem;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+.section h2{margin:0;font-size:clamp(1.8rem,3vw,2.6rem);font-family:var(--font-display);text-transform:uppercase;letter-spacing:.06em}
+.grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.card{padding:24px}
+.card p{color:var(--muted)}
+.meta{font-family:var(--font-mono);font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--primary);margin-bottom:12px}
+.list-page{padding:62px 0 40px}
+.page-title{margin:0 0 12px;font-family:var(--font-display);font-size:clamp(2.2rem,5vw,4rem);text-transform:uppercase;letter-spacing:.06em}
+.intro{max-width:70ch;color:#c7d8e7}
+.detail{padding:60px 0 48px}
+.article-wrap{display:grid;grid-template-columns:minmax(0,780px) 280px;gap:34px}
+.prose{background:linear-gradient(180deg,rgba(18,31,49,.7),rgba(10,19,31,.92));border:1px solid var(--border);border-radius:var(--radius);padding:34px;box-shadow:var(--shadow)}
+.prose h2{font-family:var(--font-display);font-size:1.7rem;text-transform:uppercase;letter-spacing:.05em;margin:34px 0 12px}
+.prose p,.prose li{color:#d7e4ef}
+.prose ul{padding-left:18px}
+.sidebar{display:grid;gap:16px;align-content:start}
+.footer{padding:36px 0 50px;border-top:1px solid rgba(83,239,255,.12);margin-top:42px}
+.footer-grid{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;color:var(--muted)}
+html,body{max-width:100%;overflow-x:hidden}
+.nav a,.brand,.card,.panel,.prose,p{overflow-wrap:break-word;word-break:break-word}
+.hero h1{overflow-wrap:normal;word-break:normal}
+
+@media (max-width:980px){
+  .header-row{flex-direction:column;align-items:flex-start;justify-content:center;min-height:auto;padding:14px 0}
+  .nav{width:100%;flex-direction:column;align-items:flex-start;gap:10px}
+  .nav a,.toggle{width:100%}
+  .hero-grid,.grid-3,.grid-2,.article-wrap{grid-template-columns:1fr}
+  .section-head{flex-direction:column;align-items:flex-start}
+  .hero{padding:42px 0 28px}
+  .brand-title{font-size:1.05rem}
+  .brand-sub{font-size:.72rem;letter-spacing:.05em}
+}
+
+@media (max-width:640px){
+  body{line-height:1.6}
+  .shell{padding:0 14px}
+  .site-header{overflow:visible}
+  .header-row{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:12px;min-height:auto;padding:12px 0}
+  .brand{width:100%}
+  .brand-title{font-size:1rem;letter-spacing:.06em}
+  .brand-sub{font-size:.66rem;letter-spacing:.06em;line-height:1.25}
+  .menu-toggle{display:inline-flex}
+  .nav{grid-column:1/-1;display:none !important;flex-direction:column;align-items:flex-start;gap:0;width:100%;padding:8px 0 0;background:transparent}
+  .nav.is-open{display:flex !important}
+  .nav a{width:100%;font-size:.82rem;letter-spacing:.06em;padding:10px 0;min-height:44px;border-bottom:1px solid rgba(83,239,255,.10)}
+  .nav a:last-child{border-bottom:none}
+  .hero h1{font-size:clamp(1.7rem,10vw,2.6rem)!important;line-height:1.02;letter-spacing:.03em;overflow-wrap:normal;word-break:normal}
+  .page-title{font-size:clamp(1.8rem,9vw,2.6rem)}
+  .eyebrow,.btn,.social-link,.mini-link{font-size:.78rem;letter-spacing:.05em}
+  .panel,.card,.prose{padding:18px;border-radius:18px}
+  .section{padding:28px 0 14px}
+  .list-page,.detail{padding:36px 0 24px}
+  .hero-grid{gap:24px}
+  .lead{max-width:100%}
+  .panel{margin-top:4px}
+}
+
+@media (min-width:641px){
+  .nav{display:flex !important}
+}
+</style></head><body><a class="skip" href="#contenido">Saltar al contenido</a>
+<header class="site-header">
+  <div class="shell header-row">
+    <a class="brand" href="index.html">
+      <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Logotipo de investigación digital"><path d="M27 12C19.82 12 14 17.82 14 25C14 32.18 19.82 38 27 38C34.18 38 40 32.18 40 25C40 17.82 34.18 12 27 12Z" stroke="currentColor" stroke-width="3"/><path d="M36.5 34.5L50 48" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M27 18V32" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"/><path d="M20 25H34" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"/></svg>
+      <div>
+        <div class="brand-title">Crimicyber</div>
+        <div class="brand-sub">Investigación en entornos digitales</div>
+      </div>
+    </a>
+    <nav class="nav" aria-label="Principal">
+      <a href="articulos.html">Artículos</a>
+      <a href="eventos.html">Eventos</a>
+      <a href="index.html#colaboraciones">Colaboraciones</a>
+      <a href="index.html#sobre-mi">Sobre mí</a>
+      <a href="index.html#proyectos">Proyectos</a>
+      <a href="index.html#contacto">Contacto</a>
+      
+    </nav>
+  </div>
+</header>
+<main id="contenido">
+  <section class="detail">
+    <div class="shell">
+      <div class="section-kicker">Artículo</div>
+      <h1 class="page-title">Cuando el amor es una estafa</h1>
+      <p class="intro">
+        Estafas románticas contra personas adultas mayores: psicología del estafador, señales de alerta e impacto emocional
+      </p>
+
+      <div class="article-wrap">
+        <article class="prose">
+          <div class="meta">Publicado por Crimicyber</div>
+
+    <p>
+      En el mundo digital no solo se comparte música, fotos y recuerdos. También se construyen
+      relaciones, se acompaña la soledad y se busca afecto. Para muchas personas adultas mayores,
+      internet se ha convertido en una ventana para sentir compañía.
+    </p>
+
+    <p>
+      El problema aparece cuando alguien decide utilizar esa ventana no para conectar, sino para
+      manipular.
+    </p>
+
+    <p>
+      Las estafas románticas dirigidas a personas mayores son una forma de cibercrimen que explota
+      la necesidad de afecto y compañía para robar dinero, información o control sobre la vida de
+      la víctima. No son historias de ingenuidad; son estrategias diseñadas para lastimar.
+    </p>
+
+    <h2>¿Qué es una estafa romántica?</h2>
+    <p>
+      Una estafa romántica es una forma de engaño en la que alguien finge interés amoroso o
+      afectivo con el objetivo de obtener beneficios económicos o personales.
+    </p>
+
+    <p>
+      En el contexto de personas adultas mayores, suele ocurrir a través de:
+    </p>
+
+    <ul>
+      <li>Redes sociales (Facebook, Instagram, etc.).</li>
+      <li>Aplicaciones de citas, incluyendo aquellas dirigidas a mayores.</li>
+      <li>Plataformas de mensajería (WhatsApp, Messenger, etc.).</li>
+    </ul>
+
+    <p>
+      El estafador crea un personaje con fotos, historias y una supuesta biografía que parece
+      perfecta para la víctima: alguien que comparte gustos, edad, valores, dolores y deseos.
+      Trabaja sobre varias víctimas a la vez, usando guiones similares.
+    </p>
+
+    <h2>Por qué las personas mayores son blanco frecuente</h2>
+    <p>
+      No se trata de que “sean más confiadas” o “no entiendan internet”; esa explicación es
+      superficial y culpabiliza. Hay factores estructurales y emocionales que aumentan su
+      exposición:
+    </p>
+
+    <ul>
+      <li>
+        <strong>Soledad y aislamiento:</strong> vivir lejos de la familia, enviudar, perder
+        amistades, cambiar de entorno. La necesidad de conversación y compañía es real.
+      </li>
+      <li>
+        <strong>Brecha digital y desinformación:</strong> muchas veces no han recibido formación
+        sobre riesgos específicos en entornos online, ni tienen a quién preguntar sin sentir
+        vergüenza.
+      </li>
+      <li>
+        <strong>Relaciones familiares complejas:</strong> miedo a “molestar” o a ser juzgados por
+        hijos y familiares, lo que dificulta hablar de nuevas relaciones o dudas.
+      </li>
+      <li>
+        <strong>Cultura del silencio:</strong> una vida entera criada bajo la idea de que no se
+        habla de ciertos temas personales, incluida la vida amorosa en la vejez.
+      </li>
+    </ul>
+
+    <p>
+      Los estafadores conocen estos puntos y diseñan sus estrategias para aprovecharlos.
+    </p>
+
+    <h2>Cómo actúa el estafador: fases del engaño</h2>
+    <p>
+      En términos criminológicos y psicológicos, el <em>modus operandi</em> suele seguir un
+      patrón.
+    </p>
+
+    <h3>1. Fase de conexión</h3>
+    <p>
+      El estafador busca perfiles de personas que parezcan solas, que hablen de viudez, de
+      nostalgia, de hobbies tranquilos. Envía una solicitud de amistad o un primer mensaje amable,
+      nada agresivo.
+    </p>
+
+    <p>
+      Comenta intereses en común, valida emociones (“yo también me siento solo”), muestra
+      disponibilidad constante (mensajes diarios, “buenos días” y “buenas noches”). Aquí construye
+      una relación de confianza: la víctima empieza a sentir que “por fin alguien la entiende”.
+    </p>
+
+    <h3>2. Fase de idealización</h3>
+    <p>
+      Poco a poco, el personaje se convierte en la pareja ideal:
+    </p>
+
+    <ul>
+      <li>Siempre tiene tiempo.</li>
+      <li>Siempre escucha.</li>
+      <li>Siempre dice lo correcto.</li>
+    </ul>
+
+    <p>
+      No hay conflictos, no hay defectos visibles. La víctima proyecta sus deseos y expectativas
+      sobre esa figura: “así es como debería ser una relación”.
+    </p>
+
+    <p>
+      El estafador aprovecha vulnerabilidades emocionales muy humanas: el miedo a envejecer sin
+      compañía, la necesidad de sentirse elegida o elegido, el deseo de volver a enamorarse.
+    </p>
+
+    <h3>3. Fase de problema y petición</h3>
+    <p>
+      Cuando la conexión emocional está consolidada, aparece el “problema”:
+    </p>
+
+    <ul>
+      <li>Una emergencia médica.</li>
+      <li>Deudas con el banco.</li>
+      <li>Riesgo de desalojo.</li>
+      <li>Un viaje necesario para “por fin conocerse” que no puede pagar.</li>
+    </ul>
+
+    <p>
+      Al principio, no pide dinero abiertamente. Habla de angustia, miedo, agotamiento. La
+      víctima, que ya está implicada emocionalmente, se ofrece: “si pudiera ayudarte, lo haría”.
+    </p>
+
+    <p>
+      Entonces llega la petición directa:
+    </p>
+
+    <p>
+      “No quiero aprovecharme de ti, pero cualquier ayuda sería un gesto de amor que nunca
+      olvidaré”, “Si sales de esto conmigo, te prometo que estaré contigo siempre”.
+    </p>
+
+    <p>
+      Es el momento en que el vínculo afectivo se transforma en herramienta para presionar.
+    </p>
+
+    <h3>4. Fase de escalada</h3>
+    <p>
+      Si la víctima accede, empiezan los pagos:
+    </p>
+
+    <ul>
+      <li>Transferencias.</li>
+      <li>Tarjetas de regalo.</li>
+      <li>Depósitos.</li>
+    </ul>
+
+    <p>
+      Cada ayuda viene acompañada de gratitud exagerada y promesas de futuro. Con el tiempo,
+      los problemas “se complican”, aparecen nuevas excusas y las cantidades aumentan.
+    </p>
+
+    <p>
+      Cuando la víctima duda, el estafador responde con:
+    </p>
+
+    <ul>
+      <li><strong>Culpa:</strong> “pensé que podía confiar en ti”.</li>
+      <li><strong>Miedo:</strong> “si no me ayudas, lo perderé todo”.</li>
+      <li>
+        <strong>Aislamiento:</strong> “no le cuentes a tu familia, podrían separarnos”.
+      </li>
+    </ul>
+
+    <p>
+      La meta es que la persona mayor perciba que decir no no es protegerse, sino traicionar la
+      relación.
+    </p>
+
+    <h3>5. Fase de desaparición</h3>
+    <p>
+      Cuando el dinero se agota, la víctima cuestiona demasiado o alguien externo interviene,
+      el estafador suele:
+    </p>
+
+    <ul>
+      <li>Bloquear.</li>
+      <li>Cambiar de cuenta.</li>
+      <li>Borrar perfiles.</li>
+    </ul>
+
+    <p>
+      La víctima queda con el bolsillo afectado, pero también con el corazón roto.
+    </p>
+
+    <h2>Psicología detrás del estafador romántico</h2>
+    <p>
+      No todos los estafadores románticos son iguales, pero comparten ciertos rasgos y
+      estrategias:
+    </p>
+
+    <ul>
+      <li>
+        <strong>Alta capacidad de manipulación emocional:</strong> saben leer necesidades
+        afectivas y adaptar el discurso a cada víctima.
+      </li>
+      <li>
+        <strong>Uso consciente del “efecto pie en la puerta”:</strong> primero consiguen
+        pequeños compromisos (atención, tiempo, información), luego piden favores mayores
+        (dinero, datos bancarios).
+      </li>
+      <li>
+        <strong>Construcción de dependencia emocional:</strong> el objetivo no es solo obtener
+        dinero, sino mantener a la víctima enganchada durante meses para maximizar ganancias.
+      </li>
+      <li>
+        <strong>Normalización de la mentira:</strong> modifican historias, cambian detalles,
+        se contradicen, pero siempre tienen una explicación emocional que reduce el
+        cuestionamiento.
+      </li>
+      <li>
+        <strong>Despersonalización de la víctima:</strong> muchas veces trabajan con varias
+        personas a la vez; detrás de cada historia hay un guion, no un vínculo único.
+      </li>
+    </ul>
+
+    <p>
+      Poner foco en esta psicología es clave para entender que no se trata de “un error” de la
+      víctima, sino de una estrategia de abuso emocional y económico.
+    </p>
+
+    <h2>Impacto en las víctimas mayores</h2>
+    <p>
+      El impacto no es solo financiero:
+    </p>
+
+    <ul>
+      <li>
+        <strong>Emocional:</strong> vergüenza, culpa, tristeza profunda, sensación de ridículo.
+      </li>
+      <li>
+        <strong>Relacional:</strong> dificultad para confiar de nuevo, miedo a hablar de sus
+        deseos afectivos, tensión con familiares.
+      </li>
+      <li>
+        <strong>Salud mental:</strong> ansiedad, depresión, aumento del sentimiento de soledad
+        y desesperanza.
+      </li>
+    </ul>
+
+    <p>
+      Cuando la respuesta del entorno es dura o burlona (“¿cómo pudiste caer?”), se añade una
+      capa más de daño: la víctima aprende que hablar de lo sucedido significa ser juzgada,
+      no acompañada.
+    </p>
+
+    <h2>Señales de alerta para detectar estafas románticas</h2>
+    <p>
+      Si tienes personas mayores cerca en tu familia, comunidad o trabajo, estas señales pueden
+      ayudar:
+    </p>
+
+    <h3>Relaciones online que avanzan demasiado rápido</h3>
+    <p>
+      Declaraciones de amor o de vínculo muy fuerte en pocas semanas, sin contacto presencial
+      ni videollamadas creíbles.
+    </p>
+
+    <h3>Excusas constantes para no mostrarse en video o en persona</h3>
+    <p>
+      Problemas de cámara, salud, viaje, trabajo, siempre algo que impide una verificación
+      clara de identidad.
+    </p>
+
+    <h3>Problemas económicos recurrentes</h3>
+    <p>
+      Emergencias médicas, trámites, deudas que aparecen una y otra vez, siempre con urgencia
+      y fuertes emociones.
+    </p>
+
+    <h3>Petición de dinero, regalos o datos bancarios</h3>
+    <p>
+      Especialmente cuando se vinculan directamente al mantenimiento de la relación: “si no me
+      ayudas, todo se acaba”.
+    </p>
+
+    <h3>Mensajes que invitan a guardar secreto</h3>
+    <p>
+      “No le cuentes esto a tus hijos”, “Tu familia no entendería lo nuestro”, “Lo mejor es que
+      esto se quede entre tú y yo”.
+    </p>
+
+    <p>
+      Cualquiera de estas señales amerita conversación, y varias de ellas juntas son una bandera
+      roja clara.
+    </p>
+
+    <p>
+      Las estafas románticas son un recordatorio doloroso de que el cibercrimen no solo roba
+      dinero: roba confianza, esperanza y proyectos de vida.
+    </p>
+
+    <p>
+      Frente a esto, la respuesta no puede ser solo técnica; tiene que ser también humana. Hablar
+      de estos casos, comprender la psicología detrás del estafador y ofrecer espacios seguros para
+      que las víctimas cuenten su historia es una forma de devolverles algo que el delito les
+      quita: dignidad y posibilidad de reconstruirse.
+    </p>
+
+    <p>
+      Si quieres profundizar en este tema y escuchar la historia completa de Don Ernesto, puedes
+      hacerlo en el episodio <strong>“Cuando el amor es una estafa”</strong> de tu podcast
+      <em>Expediente Cibercrimen</em>.
+    </p>
+  </article>
+
+  <aside class="sidebar">
+    <a class="mini-link" href="articulos.html">Regresar</a>
+
+    <div class="card">
+      <div class="meta">Idea central</div>
+      <p>
+        Las estafas románticas contra personas adultas mayores explotan la necesidad de afecto
+        para ejercer abuso emocional y económico; la respuesta debe ser técnica y, sobre todo,
+        humana.
+      </p>
+    </div>
+  </aside>
+</div>
+<footer class="footer" id="contacto"><div class="shell footer-grid"><div><div class="brand-sub">Crimicyber</div><div>© 2026 Mirna Zárate. Todos los derechos reservados.</div></div><div><div>Contacto y redes</div><div class="social-row"><a class="social-link" href="https://instagram.com/crimicyber_oficial" target="_blank" rel="noopener noreferrer">Instagram</a><a class="social-link" href="mailto:crimicyber.oficial@gmail.com">Email</a><a class="social-link" href="https://open.spotify.com/show/033Mh5IwbgnGZrZjKKTqlj?si=56b6fec7132045ba" target="_blank" rel="noopener noreferrer">Spotify</a></div></div></div></footer></body></html>
