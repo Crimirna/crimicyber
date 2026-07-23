@@ -1,0 +1,391 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Crimicyber — Inicio</title>
+<meta name="description" content="Crimicyber: blog editorial sobre cibercriminología, seguridad digital, investigación y prevención.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Orbitron:wght@500;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#07111b;--bg2:#0c1624;--surface:rgba(14,25,40,.82);--surface-2:rgba(20,35,54,.92);--border:rgba(85,231,255,.18);--text:#eaf6ff;--muted:#9eb6cb;--primary:#53efff;--accent:#ff4fd8;--lime:#d8ff47;--shadow:0 0 0 1px rgba(83,239,255,.12),0 18px 60px rgba(0,0,0,.35);--radius:24px;--radius-sm:16px;--content:1180px;--font-display:'Orbitron',sans-serif;--font-body:'Inter',sans-serif;--font-mono:'Space Mono',monospace}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:var(--font-body);background:radial-gradient(circle at 12% 68%, rgba(0,255,225,.12), transparent 32%),radial-gradient(circle at 92% 30%, rgba(255,79,216,.12), transparent 28%),linear-gradient(180deg,#040a12 0%,#07111b 100%);color:var(--text);line-height:1.7}
+body::before{content:'';position:fixed;inset:0;pointer-events:none;background-image:linear-gradient(rgba(83,239,255,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(83,239,255,.05) 1px,transparent 1px);background-size:72px 72px;mask-image:linear-gradient(180deg,rgba(255,255,255,.35),transparent 82%);opacity:.35}
+.shell{max-width:var(--content);margin:0 auto;padding:0 24px}
+.skip{position:absolute;left:-9999px}
+.skip:focus{left:16px;top:16px;z-index:1000;background:#fff;color:#000;padding:10px 14px}
+.site-header{position:sticky;top:0;z-index:50;background:rgba(4,10,18,.78);backdrop-filter:blur(18px);border-bottom:1px solid rgba(83,239,255,.12)}
+.header-row{display:flex;align-items:center;justify-content:space-between;gap:18px;min-height:84px}
+.brand{display:flex;align-items:center;gap:14px;text-decoration:none;color:var(--text);min-width:0}
+.brand svg{width:46px;height:46px;color:var(--primary);filter:drop-shadow(0 0 12px rgba(83,239,255,.35));flex:0 0 46px}
+.brand-title{font-family:var(--font-display);font-size:1.6rem;letter-spacing:.08em;text-transform:uppercase}
+.brand-sub{font-family:var(--font-mono);font-size:.82rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+.nav{display:flex;align-items:center;gap:22px;flex-wrap:wrap}
+.nav a,.toggle{font-family:var(--font-mono);font-size:.92rem;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;color:var(--text);min-height:44px;display:inline-flex;align-items:center}
+.nav a:hover,.toggle:hover{color:var(--primary)}
+.toggle{border:1px solid var(--border);border-radius:999px;padding:0 14px;background:transparent;cursor:pointer}
+.menu-toggle{display:none;border:1px solid var(--border);border-radius:14px;background:rgba(8,14,25,.84);width:46px;height:46px;align-items:center;justify-content:center;cursor:pointer;padding:0;box-shadow:0 0 0 1px rgba(83,239,255,.08) inset}
+.menu-toggle span{display:block;width:20px;height:2px;background:var(--text);border-radius:999px;transition:transform .24s ease,opacity .24s ease}
+.menu-toggle-inner{display:flex;flex-direction:column;gap:5px}
+.menu-toggle.is-open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.menu-toggle.is-open span:nth-child(2){opacity:0}
+.menu-toggle.is-open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.hero{padding:84px 0 58px}
+.hero-grid{display:grid;grid-template-columns:1.2fr .85fr;gap:36px;align-items:end}
+.eyebrow{display:inline-flex;align-items:center;gap:12px;border:1px solid rgba(83,239,255,.16);border-radius:999px;padding:12px 18px;font-family:var(--font-mono);font-size:.88rem;letter-spacing:.14em;text-transform:uppercase;color:var(--primary);background:linear-gradient(90deg,rgba(83,239,255,.08),rgba(255,79,216,.05))}
+.eyebrow::before{content:'';width:11px;height:11px;border-radius:50%;background:var(--lime);box-shadow:0 0 12px rgba(216,255,71,.7)}
+h1{margin:22px 0 18px;font-family:var(--font-display);font-size:clamp(3rem,7vw,5.5rem);line-height:1.02;letter-spacing:.05em;text-transform:uppercase}
+p.lead{font-size:clamp(1.05rem,2vw,1.45rem);color:#c8d7e5;max-width:24ch}
+.hero-actions,.social-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:28px}
+.btn,.social-link,.mini-link{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:0 18px;border-radius:999px;border:1px solid var(--border);text-decoration:none;color:var(--text);font-family:var(--font-mono);font-size:.86rem;letter-spacing:.09em;text-transform:uppercase;background:rgba(83,239,255,.04)}
+.btn-primary{background:linear-gradient(90deg,rgba(83,239,255,.16),rgba(255,79,216,.11));box-shadow:0 0 0 1px rgba(83,239,255,.14),0 0 24px rgba(83,239,255,.12)}
+.btn:hover,.social-link:hover,.mini-link:hover{color:var(--primary);transform:translateY(-1px)}
+.panel,.card{background:linear-gradient(180deg,rgba(18,31,49,.84),rgba(11,20,34,.92));border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow)}
+.panel{padding:30px}
+.panel h3,.card h3{margin:0 0 10px;font-size:1.45rem}
+.muted{color:var(--muted)}
+.section{padding:40px 0 22px}
+.section-head{display:flex;align-items:end;justify-content:space-between;gap:22px;margin-bottom:24px}
+.section-kicker{font-family:var(--font-mono);font-size:.84rem;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+.section h2{margin:0;font-size:clamp(1.8rem,3vw,2.6rem);font-family:var(--font-display);text-transform:uppercase;letter-spacing:.06em}
+.grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.card{padding:24px}
+.card p{color:var(--muted)}
+.meta{font-family:var(--font-mono);font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--primary);margin-bottom:12px}
+.list-page{padding:62px 0 40px}
+.page-title{margin:0 0 12px;font-family:var(--font-display);font-size:clamp(2.2rem,5vw,4rem);text-transform:uppercase;letter-spacing:.06em}
+.intro{max-width:70ch;color:#c7d8e7}
+.detail{padding:60px 0 48px}
+.article-wrap{display:grid;grid-template-columns:minmax(0,780px) 280px;gap:34px}
+.prose{background:linear-gradient(180deg,rgba(18,31,49,.7),rgba(10,19,31,.92));border:1px solid var(--border);border-radius:var(--radius);padding:34px;box-shadow:var(--shadow)}
+.prose h2{font-family:var(--font-display);font-size:1.7rem;text-transform:uppercase;letter-spacing:.05em;margin:34px 0 12px}
+.prose p,.prose li{color:#d7e4ef}
+.prose ul{padding-left:18px}
+.sidebar{display:grid;gap:16px;align-content:start}
+.footer{padding:36px 0 50px;border-top:1px solid rgba(83,239,255,.12);margin-top:42px}
+.footer-grid{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;color:var(--muted)}
+html,body{max-width:100%;overflow-x:hidden}
+.nav a,.brand,.card,.panel,.prose,p{overflow-wrap:break-word;word-break:break-word}
+.hero h1{overflow-wrap:normal;word-break:normal}
+
+@media (max-width:980px){
+  .header-row{flex-direction:column;align-items:flex-start;justify-content:center;min-height:auto;padding:14px 0}
+  .nav{width:100%;flex-direction:column;align-items:flex-start;gap:10px}
+  .nav a,.toggle{width:100%}
+  .hero-grid,.grid-3,.grid-2,.article-wrap{grid-template-columns:1fr}
+  .section-head{flex-direction:column;align-items:flex-start}
+  .hero{padding:42px 0 28px}
+  .brand-title{font-size:1.05rem}
+  .brand-sub{font-size:.72rem;letter-spacing:.05em}
+}
+
+@media (max-width:640px){
+  body{line-height:1.6}
+  .shell{padding:0 14px}
+  .site-header{overflow:visible}
+  .header-row{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:12px;min-height:auto;padding:12px 0}
+  .brand{width:100%}
+  .brand-title{font-size:1rem;letter-spacing:.06em}
+  .brand-sub{font-size:.66rem;letter-spacing:.06em;line-height:1.25}
+  .menu-toggle{display:inline-flex}
+  .nav{grid-column:1/-1;display:none !important;flex-direction:column;align-items:flex-start;gap:0;width:100%;padding:8px 0 0;background:transparent}
+  .nav.is-open{display:flex !important}
+  .nav a{width:100%;font-size:.82rem;letter-spacing:.06em;padding:10px 0;min-height:44px;border-bottom:1px solid rgba(83,239,255,.10)}
+  .nav a:last-child{border-bottom:none}
+  .hero h1{font-size:clamp(1.7rem,10vw,2.6rem)!important;line-height:1.02;letter-spacing:.03em;overflow-wrap:normal;word-break:normal}
+  .page-title{font-size:clamp(1.8rem,9vw,2.6rem)}
+  .eyebrow,.btn,.social-link,.mini-link{font-size:.78rem;letter-spacing:.05em}
+  .panel,.card,.prose{padding:18px;border-radius:18px}
+  .section{padding:28px 0 14px}
+  .list-page,.detail{padding:36px 0 24px}
+  .hero-grid{gap:24px}
+  .lead{max-width:100%}
+  .panel{margin-top:4px}
+}
+
+@media (min-width:641px){
+  .nav{display:flex !important}
+}
+</style></head><body><a class="skip" href="#contenido">Saltar al contenido</a>
+<header class="site-header">
+  <div class="shell header-row">
+    <a class="brand" href="index.html">
+      <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Logotipo de investigación digital"><path d="M27 12C19.82 12 14 17.82 14 25C14 32.18 19.82 38 27 38C34.18 38 40 32.18 40 25C40 17.82 34.18 12 27 12Z" stroke="currentColor" stroke-width="3"/><path d="M36.5 34.5L50 48" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M27 18V32" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"/><path d="M20 25H34" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"/></svg>
+      <div>
+        <div class="brand-title">Crimicyber</div>
+        <div class="brand-sub">Investigación en entornos digitales</div>
+      </div>
+    </a>
+    <nav class="nav" aria-label="Principal">
+      <a href="articulos.html">Artículos</a>
+      <a href="eventos.html">Eventos</a>
+      <a href="index.html#colaboraciones">Colaboraciones</a>
+      <a href="index.html#sobre-mi">Sobre mí</a>
+      <a href="index.html#proyectos">Proyectos</a>
+      <a href="index.html#contacto">Contacto</a>
+      
+    </nav>
+  </div>
+</header>
+<main id="contenido">
+  <section class="detail">
+    <div class="shell">
+      <div class="section-kicker">Artículo</div>
+      <h1 class="page-title">La trampa de la autoexposición</h1>
+      <p class="intro">
+        Cuando las redes convierten el cuerpo adolescente en negocio
+      </p>
+
+      <div class="article-wrap">
+        <article class="prose">
+          <div class="meta">Publicado por Crimicyber</div>
+
+    <p>
+      “Es solo subir fotos”, “es mi cuerpo”, “yo decido”. Frases como estas se han vuelto
+      habituales cuando hablamos de adolescentes y plataformas como OnlyFans o el
+      <em>sugar dating</em>, envueltas en discursos de empoderamiento, libertad sexual y
+      dinero fácil. Pero detrás de esa narrativa amable se esconde algo mucho más incómodo:
+      nuevas formas de explotación sexual digital que afectan de lleno a niñas, niños y
+      adolescentes.
+    </p>
+
+    <h2>¿Qué es la autoexposición digital?</h2>
+    <p>
+      El informe <em>“Redes que atrapan. La trampa de la autoexposición”</em>, de Save the
+      Children España, propone un concepto clave: autoexposición o sobreexposición digital.
+      Habla de todas esas situaciones en las que un menor participa en actividades sexuales en
+      internet a cambio de algo: dinero, regalos, favores, <em>likes</em>, seguidores o atención.
+    </p>
+
+    <p>
+      Lo importante no es solo el contenido sexual en sí, sino el intercambio: el cuerpo
+      adolescente se convierte en moneda de cambio, un medio para obtener beneficios. Aunque
+      desde fuera parezca que la persona “lo hace porque quiere”, el informe recuerda que estas
+      decisiones se toman en un contexto de presión social, necesidad económica, estereotipos
+      machistas y búsqueda de validación continua.
+    </p>
+
+    <p>
+      Por eso, las autoras insisten en que no hablemos de “autoexplotación”, como si los
+      adolescentes se explotaran a sí mismos, sino de autoexposición como puerta de entrada a
+      la explotación sexual. En otras palabras: la culpa no es de las víctimas, sino de un
+      sistema que se lucra con sus cuerpos y de quienes se aprovechan de su vulnerabilidad.
+    </p>
+
+    <h2>OnlyFans y <em>sugar dating</em>: ¿empoderamiento o explotación?</h2>
+    <p>
+      El estudio se detiene en dos fenómenos muy presentes en la cultura digital actual:
+      OnlyFans y el <em>sugar dating</em>.
+    </p>
+
+    <p>
+      OnlyFans se presenta como una plataforma donde creadores suben contenido y cobran
+      suscripciones, propinas y pagos por material exclusivo. En la práctica, la mayor parte
+      de sus ingresos proviene de contenido sexual producido sobre todo por mujeres jóvenes,
+      mientras la base de clientes es mayoritariamente masculina.
+    </p>
+
+    <p>
+      Las webs de <em>sugar dating</em> venden la idea de una relación “acuerdo entre adultos”:
+      un hombre con recursos (<em>sugar daddy</em>) y una chica joven (<em>sugar baby</em>) que
+      recibe dinero, regalos o viajes a cambio de compañía o sexo.
+    </p>
+
+    <p>
+      Ambos mundos comparten algo: convierten la intimidad y la sexualidad en un negocio, en el
+      que el poder lo tiene quien paga. Si el <em>sugar daddy</em> puede cortar la ayuda
+      económica cuando ella no accede a una petición, estamos ante una forma de coacción,
+      aunque las redes nos lo vendan como glamour y estilo de vida aspiracional.
+    </p>
+
+    <p>
+      En el caso de OnlyFans, la propia plataforma se queda con el 20&nbsp;% de las ganancias
+      sin asumir riesgos ni costes de producción, lo que muchas voces describen como una forma
+      de proxenetismo digital: las chicas ponen el cuerpo, el tiempo, la tecnología y la
+      exposición; la empresa intermedia y se lucra.
+    </p>
+
+    <h2>¿Cómo llegan los adolescentes hasta ahí?</h2>
+    <p>
+      No es casualidad que chicas y chicos conozcan tan bien estas plataformas. Una parte
+      central del informe muestra el papel de la publicidad encubierta y los algoritmos.
+    </p>
+
+    <p>
+      Según los datos:
+    </p>
+
+    <ul>
+      <li>
+        Más de la mitad de los jóvenes encuestados vieron, siendo menores de 18 años, enlaces
+        desde redes sociales que llevaban a OnlyFans, páginas de <em>sugar daddies</em> u otros
+        sitios similares.
+      </li>
+      <li>
+        Más del 50&nbsp;% vio a influencers o creadores hablando bien de estas plataformas,
+        contándolas como historias de éxito económico.
+      </li>
+      <li>
+        Un 34&nbsp;% se encontró con publicaciones que ofrecían ganar dinero vendiendo contenido
+        íntimo durante su adolescencia.
+      </li>
+    </ul>
+
+    <p>
+      Las redes más mencionadas son Instagram, TikTok, YouTube, X/Twitter y también apps de
+      mensajería y videojuegos online. En muchas, el contenido sexual explícito está prohibido,
+      pero se esquivan las normas con códigos, eufemismos o enlaces externos: “OnlyFriends”,
+      “contenido para adultos”, cambios sutiles en la escritura, etc.
+    </p>
+
+    <p>
+      Además, las estrategias de captación son distintas para chicos y chicas:
+    </p>
+
+    <ul>
+      <li>
+        A ellas se les ofrece la narrativa del empoderamiento: “sé tu propia jefa”, “monetiza
+        tus fotos”, “tus curvas son tu negocio”.
+      </li>
+      <li>
+        A ellos se les vende la figura del emprendedor o “manager” que puede gestionar cuentas
+        de chicas y ganar dinero como agente, un rol que en la práctica funciona como
+        proxenetismo digital.
+      </li>
+    </ul>
+
+    <p>
+      En paralelo, otros estudios y medios han señalado que España es uno de los países con más
+      creadoras en OnlyFans y que la plataforma funciona como terreno fértil para la explotación
+      de jóvenes, reproduciendo patrones de prostitución y pornografía.
+    </p>
+
+    <h2>“Lo hacen porque quieren”: la ilusión de control</h2>
+    <p>
+      Una parte muy preocupante del estudio es cómo perciben estas prácticas los propios jóvenes.
+    </p>
+
+    <p>
+      Solo un 28,4&nbsp;% considera que quienes generan ingresos compartiendo contenido sexual
+      pueden estar siendo explotados. Es decir, más del 70&nbsp;% no ve explotación,
+      especialmente los chicos.
+    </p>
+
+    <p>
+      Muchas y muchos creen que se trata de una forma legítima de ganar dinero, y que quienes lo
+      hacen obtienen “grandes beneficios”, lo que refuerza la idea del “dinero fácil”.
+    </p>
+
+    <p>
+      Casi el 60&nbsp;% atribuye parte de la responsabilidad al propio menor que vende contenido,
+      lo que evidencia un fuerte discurso de culpabilización de la víctima.
+    </p>
+
+    <p>
+      Para las autoras, esto refleja una ilusión de control: la sensación de que “yo mando porque
+      elijo qué subir, cuánto cobrar y a quién dejar entrar”. Pero esa sensación es engañosa
+      cuando el ingreso económico depende de mostrar cada vez más, el algoritmo premia lo más
+      sexualizado y la presión del público castiga cualquier intento de poner límites.
+    </p>
+
+    <p>
+      De hecho, el informe muestra que las propias víctimas de explotación sexual digital tienden
+      a ver estas prácticas como menos peligrosas y más normalizadas que quienes no las han
+      sufrido, y se fijan sobre todo en los supuestos beneficios económicos.
+    </p>
+
+    <h2>¿Y el papel de las familias y las plataformas?</h2>
+    <p>
+      La autoexposición sexual no empieza el día que alguien abre una cuenta en OnlyFans. Antes
+      hay años de fotos de niñas y niños en redes, cuentas familiares que muestran su vida
+      privada al detalle y una cultura digital que premia la exhibición.
+    </p>
+
+    <p>
+      El informe llama la atención sobre el fenómeno de los <em>child influencers</em>: menores
+      cuya imagen es monetizada por adultos a través de perfiles con miles de seguidores,
+      colaboraciones pagadas y contenido que, en algunos casos, atrae audiencias adultas con
+      intereses sexuales. Esto normaliza la idea de que la exposición en internet es una forma
+      legítima de conseguir dinero, regalos o fama desde edades muy tempranas.
+    </p>
+
+    <p>
+      Además, la investigación recuerda que las plataformas no son neutrales: ganan dinero con
+      las visualizaciones, con las suscripciones y con la publicidad que se mueve en torno a
+      estos contenidos. Si los algoritmos recomiendan perfiles sexualizados a cuentas
+      adolescentes, o si es fácil saltarse la verificación de edad para abrir cuentas o consumir
+      contenido, estamos ante un problema de diseño y regulación, no solo de “malas decisiones
+      individuales”.
+    </p>
+
+    <h2>¿Qué podemos hacer desde casa, la escuela y las políticas públicas?</h2>
+    <p>
+      El informe no se queda en la denuncia: también ofrece pistas claras para actuar. Algunas
+      ideas clave, traducidas al lenguaje cotidiano:
+    </p>
+
+    <ul>
+      <li>
+        Hablar sin tabúes de sexualidad, consentimiento y dinero en casa y en la escuela. No
+        basta con decir “no lo hagas”; hay que explicar qué es explotación sexual digital, cómo
+        funcionan estas plataformas y por qué el “empoderamiento” que venden es engañoso.
+      </li>
+      <li>
+        Revisar la propia práctica adulta en redes: qué compartimos de niñas y niños, qué
+        mensajes transmitimos sobre el cuerpo, el éxito y el dinero, y cómo reaccionamos ante la
+        hipersexualización en la cultura digital.
+      </li>
+      <li>
+        Exigir más responsabilidad a las plataformas: sistemas reales de verificación de edad,
+        filtros eficaces contra material sexual de menores, algoritmos que no recomienden
+        contenido sexualizado a adolescentes y límites a la publicidad de OnlyFans, <em>sugar
+        dating</em> y contenidos similares donde hay menores.
+      </li>
+      <li>
+        Formar a docentes, equipos psicosociales y profesionales que trabajan con infancia para
+        que identifiquen señales de autoexposición y explotación sexual digital, sepan cómo
+        acompañar y conozcan las rutas de denuncia y protección.
+      </li>
+    </ul>
+
+    <h2>Cambiar la pregunta: del “¿por qué lo hacen?” al “¿quién se beneficia?”</h2>
+    <p>
+      Quizá el giro más importante que nos propone este informe es cambiar la forma de mirar. En
+      lugar de preguntar solo “¿por qué una chica de 15 años hace esto?”, deberíamos preguntarnos
+      también “¿quién gana dinero con ello?”, “¿cómo lo amplifica el algoritmo?”, “qué fue
+      normalizando la idea de que su cuerpo es un negocio?”.
+    </p>
+
+    <p>
+      Cuando ponemos el foco en la estructura —plataformas, marketing, desigualdad de género,
+      precariedad económica— se vuelve evidente que la autoexposición digital de menores no es
+      un juego inocente, sino una trampa bien montada.
+    </p>
+
+    <p>
+      La buena noticia es que también podemos desmontarla: con información, educación,
+      regulación y, sobre todo, cambiando la relación entre infancia, cuerpo y mercado en la
+      cultura digital.
+    </p>
+  </article>
+
+  <aside class="sidebar">
+    <a class="mini-link" href="articulos.html">Regresar</a>
+
+    <div class="card">
+      <div class="meta">Idea central</div>
+      <p>
+        La autoexposición sexual de adolescentes en plataformas como OnlyFans y el
+        <em>sugar dating</em> no es empoderamiento aislado, sino parte de una estructura que
+        convierte sus cuerpos en negocio y los expone a explotación.
+      </p>
+    <p>Save the Children (2025). La trampa de la autoexposición: nuevas dinámicas de explotación sexual en el entorno digital, anexo del informe Redes que atrapan: La explotación sexual de la infancia y la adolescencia en entornos digitales</p>
+    </div>
+  </aside>
+</div>
+ <footer class="footer" id="contacto"><div class="shell footer-grid"><div><div class="brand-sub">Crimicyber</div><div>© 2026 Mirna Zárate. Todos los derechos reservados.</div></div><div><div>Contacto y redes</div><div class="social-row"><a class="social-link" href="https://instagram.com/crimicyber_oficial" target="_blank" rel="noopener noreferrer">Instagram</a><a class="social-link" href="mailto:crimicyber.oficial@gmail.com">Email</a><a class="social-link" href="https://open.spotify.com/show/033Mh5IwbgnGZrZjKKTqlj?si=56b6fec7132045ba" target="_blank" rel="noopener noreferrer">Spotify</a></div></div></div></footer></body></html>
+
